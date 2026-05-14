@@ -43,7 +43,7 @@ a:hover {
 
 .top-strip {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr auto;
+    grid-template-columns: 1fr 1fr 1fr 1fr auto auto;
     align-items: center;
     padding: var(--edge);
     gap: var(--grid-gap);
@@ -455,6 +455,25 @@ a:hover {
 
 .bottom-strip a:hover {
     color: var(--text-bright);
+}
+
+/* ─── Photo strip ─── */
+
+.photo-strip {
+    display: flex;
+    gap: var(--grid-gap);
+    margin-top: 3rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+    overflow-x: auto;
+}
+
+.photo-strip img {
+    height: 240px;
+    width: auto;
+    object-fit: cover;
+    border-radius: 2px;
+    flex-shrink: 0;
 }
 
 /* ─── Responsive ─── */
