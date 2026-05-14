@@ -359,10 +359,10 @@ footer a {
 }
 
 .bunny {
-    margin-top: var(--space-lg);
+    margin-top: var(--space-md);
     font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
-    font-size: 9px;
-    line-height: 1.1;
+    font-size: 11px;
+    line-height: 1.15;
     color: var(--text-tertiary);
     white-space: pre;
     overflow-x: auto;

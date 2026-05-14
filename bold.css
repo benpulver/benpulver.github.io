@@ -128,6 +128,16 @@ a:hover {
     margin-bottom: 1rem !important;
 }
 
+.hero-aside .bunny {
+    margin-top: 1.5rem;
+    font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+    font-size: 8px;
+    line-height: 1.15;
+    color: var(--text-dim);
+    white-space: pre;
+    overflow-x: auto;
+}
+
 .hero-meta {
     color: var(--text-dim);
 }
