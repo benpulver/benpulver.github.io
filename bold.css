@@ -75,8 +75,12 @@ a:hover {
 .hero-title {
     grid-column: 1;
     grid-row: 1;
+}
+
+.video-text-wrap {
     position: relative;
     overflow: hidden;
+    padding-bottom: 0.35em;
 }
 
 .hero-tagline {
