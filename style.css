@@ -86,12 +86,27 @@ nav {
     color: var(--text);
 }
 
+.design-switch {
+    color: var(--text-tertiary) !important;
+    border-left: 1px solid var(--border);
+    padding-left: var(--space-md);
+    margin-left: 0;
+}
+
 /* ─── Header / About ─── */
 
 header {
     padding: calc(var(--space-xl) + 60px) var(--space-md) var(--space-xl);
     max-width: var(--max-width);
     margin: 0 auto;
+}
+
+.welcome {
+    font-family: -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: var(--text-tertiary);
+    margin-bottom: var(--space-sm);
+    letter-spacing: 0.01em;
 }
 
 header h1 {
@@ -111,10 +126,29 @@ header h1 {
 }
 
 .bio {
-    max-width: 580px;
+    max-width: 640px;
     color: var(--text-secondary);
-    font-size: 18px;
+    font-size: 17px;
     line-height: 1.7;
+}
+
+.bio p + p {
+    margin-top: var(--space-sm);
+}
+
+.bio .callout {
+    margin-top: var(--space-md);
+    font-family: -apple-system, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: var(--text-tertiary);
+    letter-spacing: 0.01em;
+}
+
+.areas {
+    color: var(--text-secondary);
+    font-size: 16px;
+    line-height: 1.7;
+    max-width: 640px;
 }
 
 /* ─── Sections ─── */
@@ -322,6 +356,16 @@ footer a {
 
 .footer-links a:hover {
     color: var(--text);
+}
+
+.bunny {
+    margin-top: var(--space-lg);
+    font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+    font-size: 9px;
+    line-height: 1.1;
+    color: var(--text-tertiary);
+    white-space: pre;
+    overflow-x: auto;
 }
 
 /* ─── Responsive ─── */
