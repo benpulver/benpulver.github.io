@@ -105,6 +105,55 @@ a:hover {
     color: var(--text-dim);
 }
 
+/* ─── Water shimmer on headlines ─── */
+
+@keyframes water-shimmer {
+    0%   { background-position: -150% 50%; }
+    100% { background-position:  250% 50%; }
+}
+
+.hero-title h1 .line:not(.line--accent),
+.section-head h2 {
+    background-color: #aac3d8;
+    background-image: linear-gradient(
+        110deg,
+        #6a8fb0 0%,
+        #b5cee2 6%,
+        #ffffff 11%,
+        #d8e8f3 16%,
+        #7d9eba 22%,
+        #c2d6e6 28%,
+        #ffffff 33%,
+        #e8f1f8 38%,
+        #88a8c4 44%,
+        #b8d0e3 50%,
+        #ffffff 55%,
+        #d4e3ef 60%,
+        #7799b7 66%,
+        #c8dae8 72%,
+        #ffffff 77%,
+        #dde8f1 82%,
+        #88a8c4 88%,
+        #b5cee2 94%,
+        #6a8fb0 100%
+    );
+    background-size: 320% 100%;
+    background-position: -150% 50%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    animation: water-shimmer 8s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-title h1 .line:not(.line--accent),
+    .section-head h2 {
+        animation: none;
+        background-position: 50% 50%;
+    }
+}
+
 .hero-aside {
     grid-column: 2;
     grid-row: 1;
