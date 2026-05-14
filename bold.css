@@ -269,6 +269,35 @@ a:hover {
     text-align: right;
 }
 
+/* ─── Statement section ─── */
+
+.statement-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 3rem;
+}
+
+.statement-col {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+}
+
+.statement-col .col-label {
+    color: var(--text-dim);
+    font-size: 12px;
+    letter-spacing: 0.02em;
+}
+
+.statement-col p {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text);
+    max-width: 38ch;
+}
+
 /* ─── Project list (art section) ─── */
 
 .project-list {
@@ -446,7 +475,8 @@ a:hover {
         display: none;
     }
 
-    .writing-grid {
+    .writing-grid,
+    .statement-grid {
         grid-template-columns: 1fr;
         gap: 2rem;
     }
