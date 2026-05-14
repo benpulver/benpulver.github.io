@@ -75,6 +75,8 @@ a:hover {
 .hero-title {
     grid-column: 1;
     grid-row: 1;
+    position: relative;
+    overflow: hidden;
 }
 
 .hero-tagline {
@@ -105,52 +107,45 @@ a:hover {
     color: var(--text-dim);
 }
 
-/* ─── Water shimmer on headlines ─── */
+/* ─── Water video behind headlines ─── */
 
-@keyframes water-shimmer {
-    0%   { background-position: -150% 50%; }
-    100% { background-position:  250% 50%; }
+.text-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none;
 }
 
-.hero-title h1 .line:not(.line--accent),
-.section-head h2 {
-    background-color: #aac3d8;
-    background-image: linear-gradient(
-        110deg,
-        #6a8fb0 0%,
-        #b5cee2 6%,
-        #ffffff 11%,
-        #d8e8f3 16%,
-        #7d9eba 22%,
-        #c2d6e6 28%,
-        #ffffff 33%,
-        #e8f1f8 38%,
-        #88a8c4 44%,
-        #b8d0e3 50%,
-        #ffffff 55%,
-        #d4e3ef 60%,
-        #7799b7 66%,
-        #c8dae8 72%,
-        #ffffff 77%,
-        #dde8f1 82%,
-        #88a8c4 88%,
-        #b5cee2 94%,
-        #6a8fb0 100%
-    );
-    background-size: 320% 100%;
-    background-position: -150% 50%;
-    background-clip: text;
+.hero-title h1 {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-tagline {
+    position: relative;
+    z-index: 1;
+}
+
+.water-fill {
+    background-size: cover;
+    background-position: center;
     -webkit-background-clip: text;
+    background-clip: text;
     color: transparent;
     -webkit-text-fill-color: transparent;
-    animation: water-shimmer 8s linear infinite;
+}
+
+.section-head h2 {
+    color: #aac3d8;
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .hero-title h1 .line:not(.line--accent),
-    .section-head h2 {
+    .text-video {
         animation: none;
-        background-position: 50% 50%;
     }
 }
 

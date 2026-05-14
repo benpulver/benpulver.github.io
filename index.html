@@ -19,18 +19,22 @@
         <div class="hero-title">
             <h1>
                 <span class="line">Ben</span>
-                <span class="line">Pulver.</span>
+                <span class="line">Pulver</span>
                 <span class="line line--accent">Cybernetics &amp; art.</span>
             </h1>
             <p class="hero-tagline">Researcher · Artist · Writer</p>
+            <video class="text-video" autoplay loop muted playsinline>
+                <source src="assets/water.mp4" type="video/mp4">
+                <source src="assets/water-raw.mov" type="video/quicktime">
+            </video>
         </div>
 
         <aside class="hero-aside">
-            <p class="welcome-line">hi! welcome to my website :)</p>
-            <p>
+            <p class="welcome-line water-fill">hi! welcome to my website :)</p>
+            <p class="water-fill">
                 PhD candidate working on the history of art and artificial intelligence through the angle of cybernetics and aesthetics. Dissertation research on art and cybernetics in France between 1968 and 1985 &mdash; tracing an emergent &lsquo;aesthetics of dysfunction&rsquo;.
             </p>
-            <p class="hero-meta">
+            <p class="hero-meta water-fill">
                 feel free to reach out to collaborate, contribute writing, or invite a talk.
             </p>
         </aside>
@@ -244,5 +248,28 @@
         <span><a href="#">GitHub</a> / <a href="#">Are.na</a> / <a href="#">Twitter</a></span>
         <span>© 2025</span>
     </footer>
+    <script>
+    (function() {
+        var video = document.querySelector('.text-video');
+        var fills = document.querySelectorAll('.water-fill');
+        if (!video || !fills.length) return;
+        var c = document.createElement('canvas');
+        var ctx = c.getContext('2d');
+        var last = 0;
+        c.width = 320; c.height = 180;
+        function draw(t) {
+            requestAnimationFrame(draw);
+            if (t - last < 66) return;
+            last = t;
+            if (video.readyState < 2) return;
+            ctx.drawImage(video, 0, 0, 320, 180);
+            var url = c.toDataURL('image/jpeg', 0.4);
+            for (var i = 0; i < fills.length; i++) {
+                fills[i].style.backgroundImage = 'url(' + url + ')';
+            }
+        }
+        requestAnimationFrame(draw);
+    })();
+    </script>
 </body>
 </html>
