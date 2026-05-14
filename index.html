@@ -32,17 +32,17 @@
         </div>
 
         <aside class="hero-aside">
-            <p class="welcome-line water-fill">hi! welcome to my website :)</p>
-            <p class="water-fill">
+            <p class="welcome-line">hi! welcome to my website :)</p>
+            <p>
                 I am a PhD candidate and researcher working on the history of art and artificial intelligence through the angle of cybernetics and aesthetics. My dissertation research is specifically on the story of art and cybernetics in France between 1968 and 1985. In that timeline I trace an emergent condition I name an &lsquo;aesthetics of dysfunction&rsquo; which can be mapped onto two dimensions of &lsquo;dysfunction&rsquo; in response to cybernetics: 1) the explicit protest and sabotage against the cybernetic regime of control and order; and 2) the implicit, often spectral condition of cybernetic and computer art and telematics that while seeking formal qualities of control and function reveal their fundamental motivation of mitigating disorder and dysfunction.
             </p>
-            <p class="water-fill">
+            <p>
                 My research has also found its way into a zine + performance lecture and multiple talks. Recently, I self-published a zine and gave a performance lecture at an art exhibition at the House of Annetta in London, England titled <em>New Heretics</em> &mdash; the zine and the talk were titled <em>Cybernetic Images and Imaginaries</em> and investigated a speculative visual archive to think about how the capacious and multivalent ideas of cybernetics and artificial intelligence have found figures and form. My talks have ranged from giving an invited lecture on the history of cybernetics and artificial intelligence at the Sorbonne 1 in Paris, France, to lectures in Toronto at the Centre for Culture and Technology on cybernetics and AI slop, and in the University of Toronto Art History department on &lsquo;the future of art, or art for the future&rsquo; on the aesthetic theorizations of Abraham Moles.
             </p>
-            <p class="water-fill">
+            <p>
                 Alongside my research practice, I also maintain a dynamic mixed media art practice. I have been a printing apprentice at Massey College in the Print Studio, exploring 19th century letterpress printing techniques and alienation in contemporary typing practices, and have exhibited some of this work at Hart House. I have also had digital artwork, poetry, and short stories published in <em>Arbour Room Magazine</em> and <em>Audeamus</em>. For the Massey Podcast &lsquo;The JCR&rsquo; I have published three podcasts on topics ranging from the effects of ChatGPT on various disciplines; architecture, affect, and aesthetics; and walking and thinking.
             </p>
-            <p class="hero-meta water-fill">
+            <p class="hero-meta">
                 feel free to reach out for any invitations to collaborate or contribute writing, or for any request to give a talk :)
             </p>
         </aside>
@@ -256,28 +256,5 @@
         <span><a href="#">GitHub</a> / <a href="#">Are.na</a> / <a href="#">Twitter</a></span>
         <span>© 2025</span>
     </footer>
-    <script>
-    (function() {
-        var video = document.querySelector('.text-video');
-        var fills = document.querySelectorAll('.water-fill');
-        if (!video || !fills.length) return;
-        var c = document.createElement('canvas');
-        var ctx = c.getContext('2d');
-        var last = 0;
-        c.width = 320; c.height = 180;
-        function draw(t) {
-            requestAnimationFrame(draw);
-            if (t - last < 66) return;
-            last = t;
-            if (video.readyState < 2) return;
-            ctx.drawImage(video, 0, 0, 320, 180);
-            var url = c.toDataURL('image/jpeg', 0.4);
-            for (var i = 0; i < fills.length; i++) {
-                fills[i].style.backgroundImage = 'url(' + url + ')';
-            }
-        }
-        requestAnimationFrame(draw);
-    })();
-    </script>
 </body>
 </html>
