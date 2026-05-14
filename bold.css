@@ -472,6 +472,23 @@ a:hover {
 
 /* ─── CV section ─── */
 
+.cv-toggle {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.03em;
+    padding: 0.75rem 2rem;
+    cursor: pointer;
+    transition: border-color 0.15s, color 0.15s;
+}
+
+.cv-toggle:hover {
+    border-color: var(--text);
+    color: var(--text-bright);
+}
+
 .cv-full {
     max-width: 800px;
 }

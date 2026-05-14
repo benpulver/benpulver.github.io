@@ -271,7 +271,9 @@
             <span class="section-meta">Ben S. Pulver</span>
         </div>
 
-        <div class="cv-full">
+        <button class="cv-toggle" id="cv-toggle">View full CV ↓</button>
+
+        <div class="cv-full" id="cv-content" style="display: none;">
             <div class="cv-section">
                 <h3 class="cv-section-title">Education</h3>
 
@@ -545,6 +547,14 @@
         });
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') lb.classList.remove('active');
+        });
+
+        var cvToggle = document.getElementById('cv-toggle');
+        var cvContent = document.getElementById('cv-content');
+        cvToggle.addEventListener('click', function() {
+            var open = cvContent.style.display !== 'none';
+            cvContent.style.display = open ? 'none' : 'block';
+            cvToggle.textContent = open ? 'View full CV ↓' : 'Hide CV ↑';
         });
     })();
     </script>
