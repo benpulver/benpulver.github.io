@@ -80,7 +80,7 @@ a:hover {
 .video-text-wrap {
     position: relative;
     overflow: hidden;
-    padding-bottom: 0.55em;
+    padding-bottom: 1em;
 }
 
 .hero-tagline {
