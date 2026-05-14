@@ -188,11 +188,27 @@ a:hover {
     text-decoration-thickness: 1px;
 }
 
-/* ─── Hero columns (middle row) ─── */
+/* ─── Hero photo ─── */
+
+.hero-photo {
+    grid-column: 1;
+    grid-row: 2;
+    align-self: center;
+    justify-self: center;
+    max-width: 480px;
+}
+
+.hero-photo img {
+    width: 100%;
+    height: auto;
+    border-radius: 3px;
+}
+
+/* ─── Hero columns (bottom row) ─── */
 
 .hero-columns {
     grid-column: 1;
-    grid-row: 2;
+    grid-row: 3;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: var(--grid-gap);
@@ -228,7 +244,7 @@ a:hover {
 
 .hero-cv {
     grid-column: 2;
-    grid-row: 2;
+    grid-row: 2 / 4;
     align-self: end;
     padding-bottom: 4rem;
     display: flex;
@@ -455,6 +471,93 @@ a:hover {
 
 .bottom-strip a:hover {
     color: var(--text-bright);
+}
+
+/* ─── CV section ─── */
+
+.cv-full {
+    max-width: 800px;
+}
+
+.cv-section {
+    margin-bottom: 3rem;
+}
+
+.cv-section-title {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-dim);
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 1.25rem;
+}
+
+.cv-entry-full {
+    margin-bottom: 1.25rem;
+}
+
+.cv-entry-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.cv-entry-head strong {
+    font-weight: 500;
+    color: var(--text-bright);
+}
+
+.cv-year-right {
+    font-size: 12px;
+    color: var(--text-dim);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.cv-entry-full p {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--text);
+    margin-top: 2px;
+}
+
+.cv-sub-label {
+    color: var(--text-dim) !important;
+    font-size: 12px !important;
+    margin-top: 0.5rem !important;
+}
+
+.cv-full ul {
+    list-style: none;
+    margin-top: 0.25rem;
+}
+
+.cv-full ul li {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--text);
+    padding-left: 1rem;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.cv-full ul li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: var(--text-dim);
+}
+
+.cv-year-inline {
+    font-size: 12px;
+    color: var(--text-dim);
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 /* ─── Photo strip ─── */
