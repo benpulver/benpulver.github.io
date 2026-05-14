@@ -77,16 +77,16 @@ a:hover {
     grid-row: 1;
 }
 
-.hero-name {
+.hero-tagline {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: clamp(2rem, 4vw, 4rem);
-    font-weight: 700;
-    color: var(--text-bright);
-    letter-spacing: -0.025em;
-    line-height: 1;
-    margin-bottom: 2rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid var(--border);
+    font-size: clamp(1rem, 1.5vw, 1.5rem);
+    font-weight: 500;
+    color: var(--text-dim);
+    letter-spacing: 0.02em;
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border);
+    max-width: 50%;
 }
 
 .hero-title h1 {
