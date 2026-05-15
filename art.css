@@ -128,6 +128,19 @@
     background: #1a1a1a;
 }
 
+/* ─── Creative Writing pieces ─── */
+
+.writing-pieces {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.writing-piece {
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+}
+
 /* ─── Zine feature on main page ─── */
 
 .zine-feature {
