@@ -42,17 +42,8 @@
     z-index: 100;
   }
 
-  header h1 {
-    font-size: 17px;
-    font-weight: 600;
-    letter-spacing: -0.3px;
-  }
-
-  header p {
-    font-size: 12px;
-    color: var(--sub);
-    margin-top: 2px;
-  }
+  header h1 { font-size: 17px; font-weight: 600; letter-spacing: -0.3px; }
+  header p { font-size: 12px; color: var(--sub); margin-top: 2px; }
 
   .pulse {
     display: inline-block;
@@ -62,11 +53,7 @@
     margin-right: 5px;
     animation: pulse 2s infinite;
   }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
-  }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 
   nav {
     display: flex;
@@ -75,9 +62,7 @@
     padding: 0 12px;
     background: var(--card);
     border-bottom: 1px solid var(--border);
-    gap: 0;
   }
-
   nav::-webkit-scrollbar { display: none; }
 
   nav button {
@@ -94,11 +79,7 @@
     font-family: inherit;
     transition: color 0.15s;
   }
-
-  nav button.active {
-    color: var(--accent);
-    border-bottom-color: var(--accent);
-  }
+  nav button.active { color: var(--accent); border-bottom-color: var(--accent); }
 
   .tab-content { display: none; padding: 14px 12px; }
   .tab-content.active { display: block; }
@@ -113,14 +94,21 @@
     padding-left: 2px;
   }
 
-  .card {
+  /* Cards are <a> tags — reset link styles, add tap feedback */
+  a.card {
+    display: block;
     background: var(--card);
     border-radius: var(--radius);
     padding: 14px;
     margin-bottom: 10px;
     border: 1px solid var(--border);
     box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    text-decoration: none;
+    color: inherit;
+    -webkit-tap-highlight-color: transparent;
+    transition: background 0.1s;
   }
+  a.card:active { background: #f0f0f5; }
 
   .card-header {
     display: flex;
@@ -148,7 +136,6 @@
     font-weight: 700;
     letter-spacing: -0.5px;
   }
-
   .score-green { background: var(--green-bg); color: var(--green); }
   .score-yellow { background: var(--yellow-bg); color: var(--yellow); }
 
@@ -156,12 +143,8 @@
     font-size: 13px;
     color: var(--sub);
     margin-top: 5px;
-    display: flex;
-    align-items: center;
-    gap: 4px;
   }
-
-  .card-addr span { color: var(--text); font-weight: 500; }
+  .card-addr strong { color: var(--text); font-weight: 500; }
 
   .card-meta {
     display: flex;
@@ -171,17 +154,9 @@
     flex-wrap: wrap;
   }
 
-  .price {
-    font-size: 17px;
-    font-weight: 700;
-    letter-spacing: -0.5px;
-    color: var(--text);
-  }
+  .price { font-size: 17px; font-weight: 700; letter-spacing: -0.5px; }
 
-  .sqft {
-    font-size: 13px;
-    color: var(--sub);
-  }
+  .sqft { font-size: 13px; color: var(--sub); }
 
   .source-badge {
     font-size: 11px;
@@ -195,12 +170,7 @@
     letter-spacing: 0.3px;
   }
 
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    margin-top: 9px;
-  }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 9px; }
 
   .tag {
     font-size: 11px;
@@ -209,13 +179,8 @@
     border-radius: 6px;
     background: #f0f0f5;
     color: #555;
-    letter-spacing: 0.1px;
   }
-
-  .tag.match {
-    background: var(--tag-bg);
-    color: var(--tag);
-  }
+  .tag.match { background: var(--tag-bg); color: var(--tag); }
 
   .rank-num {
     font-size: 11px;
@@ -223,20 +188,16 @@
     color: var(--sub);
     min-width: 18px;
     padding-top: 2px;
+    flex-shrink: 0;
   }
-
-  .card-inner { flex: 1; }
 
   .card-row { display: flex; gap: 10px; }
+  .card-inner { flex: 1; min-width: 0; }
 
   /* Search Links tab */
-  .links-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-  }
+  .links-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 
-  .link-card {
+  a.link-card {
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: var(--radius);
@@ -250,31 +211,12 @@
     transition: background 0.12s;
     -webkit-tap-highlight-color: transparent;
   }
+  a.link-card:active { background: #f0f0f5; }
 
-  .link-card:active { background: #f0f0f5; }
-
-  .link-icon {
-    font-size: 20px;
-    flex-shrink: 0;
-  }
-
-  .link-name {
-    font-size: 13px;
-    font-weight: 600;
-    line-height: 1.2;
-  }
-
-  .link-desc {
-    font-size: 11px;
-    color: var(--sub);
-    margin-top: 1px;
-  }
-
-  .link-arrow {
-    margin-left: auto;
-    color: var(--sub);
-    font-size: 12px;
-  }
+  .link-icon { font-size: 20px; flex-shrink: 0; }
+  .link-name { font-size: 13px; font-weight: 600; line-height: 1.2; }
+  .link-desc { font-size: 11px; color: var(--sub); margin-top: 1px; }
+  .link-arrow { margin-left: auto; color: var(--sub); font-size: 14px; flex-shrink: 0; }
 
   .search-note {
     font-size: 12px;
@@ -286,7 +228,6 @@
     margin-bottom: 12px;
     line-height: 1.5;
   }
-
   .search-note strong { color: var(--text); }
 </style>
 </head>
@@ -298,631 +239,227 @@
 </header>
 
 <nav>
-  <button class="active" onclick="showTab('hourly')">Hourly Top 10</button>
-  <button onclick="showTab('today')">Today's Best 5</button>
-  <button onclick="showTab('week')">Week's Best 15</button>
-  <button onclick="showTab('links')">Search Links</button>
+  <button class="active" onclick="showTab('hourly', this)">Hourly Top 10</button>
+  <button onclick="showTab('today', this)">Today's Best 5</button>
+  <button onclick="showTab('week', this)">Week's Best 15</button>
+  <button onclick="showTab('links', this)">Search Links</button>
 </nav>
 
-<!-- HOURLY TOP 10 -->
 <div class="tab-content active" id="tab-hourly">
   <p class="section-label">Refreshed hourly · Sorted by score</p>
-
-  <!-- Card 1 -->
-  <div class="card">
-    <div class="card-row">
-      <div class="rank-num">#1</div>
-      <div class="card-inner">
-        <div class="card-header">
-          <div class="card-title">Bright 1BR in Converted Victorian</div>
-          <div class="score-badge score-green">94</div>
-        </div>
-        <div class="card-addr">188 Brunswick Ave · <span>Annex</span></div>
-        <div class="card-meta">
-          <span class="price">$1,650/mo</span>
-          <span class="sqft">620 sqft</span>
-          <span class="source-badge">Kijiji</span>
-        </div>
-        <div class="tags">
-          <span class="tag match">hardwood</span>
-          <span class="tag match">victorian</span>
-          <span class="tag match">bay window</span>
-          <span class="tag match">high ceilings</span>
-          <span class="tag match">walk-up</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Card 2 -->
-  <div class="card">
-    <div class="card-row">
-      <div class="rank-num">#2</div>
-      <div class="card-inner">
-        <div class="card-header">
-          <div class="card-title">Charming 1BR with Balcony</div>
-          <div class="score-badge score-green">91</div>
-        </div>
-        <div class="card-addr">562 College St · <span>Little Italy</span></div>
-        <div class="card-meta">
-          <span class="price">$1,750/mo</span>
-          <span class="sqft">580 sqft</span>
-          <span class="source-badge">Kijiji</span>
-        </div>
-        <div class="tags">
-          <span class="tag match">hardwood</span>
-          <span class="tag match">balcony</span>
-          <span class="tag match">character</span>
-          <span class="tag match">bright</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Card 3 -->
-  <div class="card">
-    <div class="card-row">
-      <div class="rank-num">#3</div>
-      <div class="card-inner">
-        <div class="card-header">
-          <div class="card-title">Spacious 1BR in Heritage Triplex</div>
-          <div class="score-badge score-green">89</div>
-        </div>
-        <div class="card-addr">74 Borden St · <span>Harbord Village</span></div>
-        <div class="card-meta">
-          <span class="price">$1,700/mo</span>
-          <span class="sqft">650 sqft</span>
-          <span class="source-badge">Craigslist</span>
-        </div>
-        <div class="tags">
-          <span class="tag match">hardwood</span>
-          <span class="tag match">heritage</span>
-          <span class="tag match">triplex</span>
-          <span class="tag match">high ceilings</span>
-          <span class="tag match">bright</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Card 4 -->
-  <div class="card">
-    <div class="card-row">
-      <div class="rank-num">#4</div>
-      <div class="card-inner">
-        <div class="card-header">
-          <div class="card-title">Renovated 1BR</div>
-          <div class="score-badge score-green">87</div>
-        </div>
-        <div class="card-addr">42 Ossington Ave · <span>Trinity Bellwoods</span></div>
-        <div class="card-meta">
-          <span class="price">$1,600/mo</span>
-          <span class="sqft">540 sqft</span>
-          <span class="source-badge">Kijiji</span>
-        </div>
-        <div class="tags">
-          <span class="tag match">hardwood</span>
-          <span class="tag">renovated</span>
-          <span class="tag match">bright</span>
-          <span class="tag match">walk-up</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Card 5 -->
-  <div class="card">
-    <div class="card-row">
-      <div class="rank-num">#5</div>
-      <div class="card-inner">
-        <div class="card-header">
-          <div class="card-title">Sunny 1BR in Edwardian Semi</div>
-          <div class="score-badge score-green">85</div>
-        </div>
-        <div class="card-addr">215 Palmerston Ave · <span>Little Italy</span></div>
-        <div class="card-meta">
-          <span class="price">$1,800/mo</span>
-          <span class="sqft">600 sqft</span>
-          <span class="source-badge">Rentals.ca</span>
-        </div>
-        <div class="tags">
-          <span class="tag match">hardwood</span>
-          <span class="tag match">edwardian</span>
-          <span class="tag match">balcony</span>
-          <span class="tag match">natural light</span>
-          <span class="tag match">character</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Card 6 -->
-  <div class="card">
-    <div class="card-row">
-      <div class="rank-num">#6</div>
-      <div class="card-inner">
-        <div class="card-header">
-          <div class="card-title">1BR Garden Suite</div>
-          <div class="score-badge score-green">82</div>
-        </div>
-        <div class="card-addr">88 Grace St · <span>Trinity Bellwoods</span></div>
-        <div class="card-meta">
-          <span class="price">$1,500/mo</span>
-          <span class="sqft">500 sqft</span>
-          <span class="source-badge">Craigslist</span>
-        </div>
-        <div class="tags">
-          <span class="tag match">hardwood</span>
-          <span class="tag">garden</span>
-          <span class="tag match">bright</span>
-          <span class="tag">quiet</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Card 7 -->
-  <div class="card">
-    <div class="card-row">
-      <div class="rank-num">#7</div>
-      <div class="card-inner">
-        <div class="card-header">
-          <div class="card-title">Character 1BR in Low-Rise</div>
-          <div class="score-badge score-green">80</div>
-        </div>
-        <div class="card-addr">620 Bloor St W · <span>Annex</span></div>
-        <div class="card-meta">
-          <span class="price">$1,850/mo</span>
-          <span class="sqft">570 sqft</span>
-          <span class="source-badge">Zumper</span>
-        </div>
-        <div class="tags">
-          <span class="tag match">hardwood</span>
-          <span class="tag match">low-rise</span>
-          <span class="tag match">bright</span>
-          <span class="tag match">balcony</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Card 8 -->
-  <div class="card">
-    <div class="card-row">
-      <div class="rank-num">#8</div>
-      <div class="card-inner">
-        <div class="card-header">
-          <div class="card-title">Cozy 1BR above Shop</div>
-          <div class="score-badge score-green">78</div>
-        </div>
-        <div class="card-addr">1102 Dundas St W · <span>Trinity Bellwoods</span></div>
-        <div class="card-meta">
-          <span class="price">$1,450/mo</span>
-          <span class="sqft">475 sqft</span>
-          <span class="source-badge">Kijiji</span>
-        </div>
-        <div class="tags">
-          <span class="tag match">hardwood</span>
-          <span class="tag match">character</span>
-          <span class="tag match">walk-up</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Card 9 -->
-  <div class="card">
-    <div class="card-row">
-      <div class="rank-num">#9</div>
-      <div class="card-inner">
-        <div class="card-header">
-          <div class="card-title">Renovated 1BR</div>
-          <div class="score-badge score-green">76</div>
-        </div>
-        <div class="card-addr">50 Clinton St · <span>Little Italy</span></div>
-        <div class="card-meta">
-          <span class="price">$1,775/mo</span>
-          <span class="sqft">550 sqft</span>
-          <span class="source-badge">PadMapper</span>
-        </div>
-        <div class="tags">
-          <span class="tag match">hardwood</span>
-          <span class="tag">renovated</span>
-          <span class="tag match">bright</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Card 10 -->
-  <div class="card">
-    <div class="card-row">
-      <div class="rank-num">#10</div>
-      <div class="card-inner">
-        <div class="card-header">
-          <div class="card-title">1BR in Art Deco Walk-Up</div>
-          <div class="score-badge score-green">74</div>
-        </div>
-        <div class="card-addr">300 Dovercourt Rd · <span>Little Italy</span></div>
-        <div class="card-meta">
-          <span class="price">$1,695/mo</span>
-          <span class="sqft">530 sqft</span>
-          <span class="source-badge">Craigslist</span>
-        </div>
-        <div class="tags">
-          <span class="tag match">hardwood</span>
-          <span class="tag">art deco</span>
-          <span class="tag match">walk-up</span>
-          <span class="tag match">character</span>
-        </div>
-      </div>
-    </div>
-  </div>
+  <div id="list-hourly"></div>
 </div>
 
-<!-- TODAY'S BEST 5 -->
 <div class="tab-content" id="tab-today">
   <p class="section-label">Top 5 · Discovered today</p>
-
-  <div class="card">
-    <div class="card-row">
-      <div class="rank-num">#1</div>
-      <div class="card-inner">
-        <div class="card-header">
-          <div class="card-title">Bright 1BR in Converted Victorian</div>
-          <div class="score-badge score-green">94</div>
-        </div>
-        <div class="card-addr">188 Brunswick Ave · <span>Annex</span></div>
-        <div class="card-meta">
-          <span class="price">$1,650/mo</span>
-          <span class="sqft">620 sqft</span>
-          <span class="source-badge">Kijiji</span>
-        </div>
-        <div class="tags">
-          <span class="tag match">hardwood</span>
-          <span class="tag match">victorian</span>
-          <span class="tag match">bay window</span>
-          <span class="tag match">high ceilings</span>
-          <span class="tag match">walk-up</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-row">
-      <div class="rank-num">#2</div>
-      <div class="card-inner">
-        <div class="card-header">
-          <div class="card-title">Charming 1BR with Balcony</div>
-          <div class="score-badge score-green">91</div>
-        </div>
-        <div class="card-addr">562 College St · <span>Little Italy</span></div>
-        <div class="card-meta">
-          <span class="price">$1,750/mo</span>
-          <span class="sqft">580 sqft</span>
-          <span class="source-badge">Kijiji</span>
-        </div>
-        <div class="tags">
-          <span class="tag match">hardwood</span>
-          <span class="tag match">balcony</span>
-          <span class="tag match">character</span>
-          <span class="tag match">bright</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-row">
-      <div class="rank-num">#3</div>
-      <div class="card-inner">
-        <div class="card-header">
-          <div class="card-title">Spacious 1BR in Heritage Triplex</div>
-          <div class="score-badge score-green">89</div>
-        </div>
-        <div class="card-addr">74 Borden St · <span>Harbord Village</span></div>
-        <div class="card-meta">
-          <span class="price">$1,700/mo</span>
-          <span class="sqft">650 sqft</span>
-          <span class="source-badge">Craigslist</span>
-        </div>
-        <div class="tags">
-          <span class="tag match">hardwood</span>
-          <span class="tag match">heritage</span>
-          <span class="tag match">triplex</span>
-          <span class="tag match">high ceilings</span>
-          <span class="tag match">bright</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-row">
-      <div class="rank-num">#4</div>
-      <div class="card-inner">
-        <div class="card-header">
-          <div class="card-title">Renovated 1BR</div>
-          <div class="score-badge score-green">87</div>
-        </div>
-        <div class="card-addr">42 Ossington Ave · <span>Trinity Bellwoods</span></div>
-        <div class="card-meta">
-          <span class="price">$1,600/mo</span>
-          <span class="sqft">540 sqft</span>
-          <span class="source-badge">Kijiji</span>
-        </div>
-        <div class="tags">
-          <span class="tag match">hardwood</span>
-          <span class="tag">renovated</span>
-          <span class="tag match">bright</span>
-          <span class="tag match">walk-up</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-row">
-      <div class="rank-num">#5</div>
-      <div class="card-inner">
-        <div class="card-header">
-          <div class="card-title">Sunny 1BR in Edwardian Semi</div>
-          <div class="score-badge score-green">85</div>
-        </div>
-        <div class="card-addr">215 Palmerston Ave · <span>Little Italy</span></div>
-        <div class="card-meta">
-          <span class="price">$1,800/mo</span>
-          <span class="sqft">600 sqft</span>
-          <span class="source-badge">Rentals.ca</span>
-        </div>
-        <div class="tags">
-          <span class="tag match">hardwood</span>
-          <span class="tag match">edwardian</span>
-          <span class="tag match">balcony</span>
-          <span class="tag match">natural light</span>
-          <span class="tag match">character</span>
-        </div>
-      </div>
-    </div>
-  </div>
+  <div id="list-today"></div>
 </div>
 
-<!-- WEEK'S BEST 15 -->
 <div class="tab-content" id="tab-week">
   <p class="section-label">Top 15 · Past 7 days</p>
-
-  <!-- Repeat all 10 from hourly + 5 more synthetic ones -->
-  <div class="card">
-    <div class="card-row"><div class="rank-num">#1</div><div class="card-inner">
-      <div class="card-header"><div class="card-title">Bright 1BR in Converted Victorian</div><div class="score-badge score-green">94</div></div>
-      <div class="card-addr">188 Brunswick Ave · <span>Annex</span></div>
-      <div class="card-meta"><span class="price">$1,650/mo</span><span class="sqft">620 sqft</span><span class="source-badge">Kijiji</span></div>
-      <div class="tags"><span class="tag match">hardwood</span><span class="tag match">victorian</span><span class="tag match">bay window</span><span class="tag match">high ceilings</span><span class="tag match">walk-up</span></div>
-    </div></div>
-  </div>
-
-  <div class="card">
-    <div class="card-row"><div class="rank-num">#2</div><div class="card-inner">
-      <div class="card-header"><div class="card-title">Charming 1BR with Balcony</div><div class="score-badge score-green">91</div></div>
-      <div class="card-addr">562 College St · <span>Little Italy</span></div>
-      <div class="card-meta"><span class="price">$1,750/mo</span><span class="sqft">580 sqft</span><span class="source-badge">Kijiji</span></div>
-      <div class="tags"><span class="tag match">hardwood</span><span class="tag match">balcony</span><span class="tag match">character</span><span class="tag match">bright</span></div>
-    </div></div>
-  </div>
-
-  <div class="card">
-    <div class="card-row"><div class="rank-num">#3</div><div class="card-inner">
-      <div class="card-header"><div class="card-title">Spacious 1BR in Heritage Triplex</div><div class="score-badge score-green">89</div></div>
-      <div class="card-addr">74 Borden St · <span>Harbord Village</span></div>
-      <div class="card-meta"><span class="price">$1,700/mo</span><span class="sqft">650 sqft</span><span class="source-badge">Craigslist</span></div>
-      <div class="tags"><span class="tag match">hardwood</span><span class="tag match">heritage</span><span class="tag match">triplex</span><span class="tag match">high ceilings</span><span class="tag match">bright</span></div>
-    </div></div>
-  </div>
-
-  <div class="card">
-    <div class="card-row"><div class="rank-num">#4</div><div class="card-inner">
-      <div class="card-header"><div class="card-title">Renovated 1BR</div><div class="score-badge score-green">87</div></div>
-      <div class="card-addr">42 Ossington Ave · <span>Trinity Bellwoods</span></div>
-      <div class="card-meta"><span class="price">$1,600/mo</span><span class="sqft">540 sqft</span><span class="source-badge">Kijiji</span></div>
-      <div class="tags"><span class="tag match">hardwood</span><span class="tag">renovated</span><span class="tag match">bright</span><span class="tag match">walk-up</span></div>
-    </div></div>
-  </div>
-
-  <div class="card">
-    <div class="card-row"><div class="rank-num">#5</div><div class="card-inner">
-      <div class="card-header"><div class="card-title">Sunny 1BR in Edwardian Semi</div><div class="score-badge score-green">85</div></div>
-      <div class="card-addr">215 Palmerston Ave · <span>Little Italy</span></div>
-      <div class="card-meta"><span class="price">$1,800/mo</span><span class="sqft">600 sqft</span><span class="source-badge">Rentals.ca</span></div>
-      <div class="tags"><span class="tag match">hardwood</span><span class="tag match">edwardian</span><span class="tag match">balcony</span><span class="tag match">natural light</span><span class="tag match">character</span></div>
-    </div></div>
-  </div>
-
-  <div class="card">
-    <div class="card-row"><div class="rank-num">#6</div><div class="card-inner">
-      <div class="card-header"><div class="card-title">1BR Garden Suite</div><div class="score-badge score-green">82</div></div>
-      <div class="card-addr">88 Grace St · <span>Trinity Bellwoods</span></div>
-      <div class="card-meta"><span class="price">$1,500/mo</span><span class="sqft">500 sqft</span><span class="source-badge">Craigslist</span></div>
-      <div class="tags"><span class="tag match">hardwood</span><span class="tag">garden</span><span class="tag match">bright</span><span class="tag">quiet</span></div>
-    </div></div>
-  </div>
-
-  <div class="card">
-    <div class="card-row"><div class="rank-num">#7</div><div class="card-inner">
-      <div class="card-header"><div class="card-title">Character 1BR in Low-Rise</div><div class="score-badge score-green">80</div></div>
-      <div class="card-addr">620 Bloor St W · <span>Annex</span></div>
-      <div class="card-meta"><span class="price">$1,850/mo</span><span class="sqft">570 sqft</span><span class="source-badge">Zumper</span></div>
-      <div class="tags"><span class="tag match">hardwood</span><span class="tag match">low-rise</span><span class="tag match">bright</span><span class="tag match">balcony</span></div>
-    </div></div>
-  </div>
-
-  <div class="card">
-    <div class="card-row"><div class="rank-num">#8</div><div class="card-inner">
-      <div class="card-header"><div class="card-title">Cozy 1BR above Shop</div><div class="score-badge score-green">78</div></div>
-      <div class="card-addr">1102 Dundas St W · <span>Trinity Bellwoods</span></div>
-      <div class="card-meta"><span class="price">$1,450/mo</span><span class="sqft">475 sqft</span><span class="source-badge">Kijiji</span></div>
-      <div class="tags"><span class="tag match">hardwood</span><span class="tag match">character</span><span class="tag match">walk-up</span></div>
-    </div></div>
-  </div>
-
-  <div class="card">
-    <div class="card-row"><div class="rank-num">#9</div><div class="card-inner">
-      <div class="card-header"><div class="card-title">Renovated 1BR</div><div class="score-badge score-green">76</div></div>
-      <div class="card-addr">50 Clinton St · <span>Little Italy</span></div>
-      <div class="card-meta"><span class="price">$1,775/mo</span><span class="sqft">550 sqft</span><span class="source-badge">PadMapper</span></div>
-      <div class="tags"><span class="tag match">hardwood</span><span class="tag">renovated</span><span class="tag match">bright</span></div>
-    </div></div>
-  </div>
-
-  <div class="card">
-    <div class="card-row"><div class="rank-num">#10</div><div class="card-inner">
-      <div class="card-header"><div class="card-title">1BR in Art Deco Walk-Up</div><div class="score-badge score-green">74</div></div>
-      <div class="card-addr">300 Dovercourt Rd · <span>Little Italy</span></div>
-      <div class="card-meta"><span class="price">$1,695/mo</span><span class="sqft">530 sqft</span><span class="source-badge">Craigslist</span></div>
-      <div class="tags"><span class="tag match">hardwood</span><span class="tag">art deco</span><span class="tag match">walk-up</span><span class="tag match">character</span></div>
-    </div></div>
-  </div>
-
-  <!-- 5 more for weekly view -->
-  <div class="card">
-    <div class="card-row"><div class="rank-num">#11</div><div class="card-inner">
-      <div class="card-header"><div class="card-title">1BR in Victorian Rowhouse</div><div class="score-badge score-green">72</div></div>
-      <div class="card-addr">149 Euclid Ave · <span>Trinity Bellwoods</span></div>
-      <div class="card-meta"><span class="price">$1,725/mo</span><span class="sqft">560 sqft</span><span class="source-badge">Kijiji</span></div>
-      <div class="tags"><span class="tag match">hardwood</span><span class="tag match">victorian</span><span class="tag match">character</span><span class="tag match">bright</span></div>
-    </div></div>
-  </div>
-
-  <div class="card">
-    <div class="card-row"><div class="rank-num">#12</div><div class="card-inner">
-      <div class="card-header"><div class="card-title">Bright 1BR, Top Floor</div><div class="score-badge score-yellow">69</div></div>
-      <div class="card-addr">885 College St · <span>Dufferin Grove</span></div>
-      <div class="card-meta"><span class="price">$1,550/mo</span><span class="sqft">510 sqft</span><span class="source-badge">Zumper</span></div>
-      <div class="tags"><span class="tag match">hardwood</span><span class="tag match">bright</span><span class="tag">top floor</span></div>
-    </div></div>
-  </div>
-
-  <div class="card">
-    <div class="card-row"><div class="rank-num">#13</div><div class="card-inner">
-      <div class="card-header"><div class="card-title">1BR in Converted Duplex</div><div class="score-badge score-yellow">66</div></div>
-      <div class="card-addr">345 Manning Ave · <span>Palmerston</span></div>
-      <div class="card-meta"><span class="price">$1,625/mo</span><span class="sqft">490 sqft</span><span class="source-badge">PadMapper</span></div>
-      <div class="tags"><span class="tag match">hardwood</span><span class="tag match">duplex</span><span class="tag match">character</span></div>
-    </div></div>
-  </div>
-
-  <div class="card">
-    <div class="card-row"><div class="rank-num">#14</div><div class="card-inner">
-      <div class="card-header"><div class="card-title">1BR, Crown Moulding + Bay Windows</div><div class="score-badge score-yellow">63</div></div>
-      <div class="card-addr">710 Spadina Ave · <span>Harbord Village</span></div>
-      <div class="card-meta"><span class="price">$1,875/mo</span><span class="sqft">580 sqft</span><span class="source-badge">Rentals.ca</span></div>
-      <div class="tags"><span class="tag match">hardwood</span><span class="tag match">crown mould</span><span class="tag match">bay window</span><span class="tag match">character</span></div>
-    </div></div>
-  </div>
-
-  <div class="card">
-    <div class="card-row"><div class="rank-num">#15</div><div class="card-inner">
-      <div class="card-header"><div class="card-title">Quiet 1BR, Walk-Up</div><div class="score-badge score-yellow">60</div></div>
-      <div class="card-addr">190 Robert St · <span>Harbord Village</span></div>
-      <div class="card-meta"><span class="price">$1,575/mo</span><span class="sqft">520 sqft</span><span class="source-badge">Craigslist</span></div>
-      <div class="tags"><span class="tag match">hardwood</span><span class="tag match">walk-up</span><span class="tag">quiet</span></div>
-    </div></div>
-  </div>
+  <div id="list-week"></div>
 </div>
 
-<!-- SEARCH LINKS -->
 <div class="tab-content" id="tab-links">
-  <p class="search-note"><strong>Pre-filtered links</strong> for Toronto 1BR under $1,900. Tap to search directly — new listings appear here daily.</p>
-
+  <p class="search-note"><strong>Pre-filtered links</strong> for Toronto 1BR under $1,900. Tap to open directly — new listings appear here daily.</p>
   <div class="links-grid">
-
     <a class="link-card" href="https://www.kijiji.ca/b-apartments-condos/city-of-toronto/1-bedroom/k0c37l1700273a54?ad=offering&price=0__1900" target="_blank" rel="noopener">
-      <span class="link-icon">🏠</span>
-      <div><div class="link-name">Kijiji</div><div class="link-desc">1BR · under $1,900</div></div>
-      <span class="link-arrow">›</span>
+      <span class="link-icon">🏠</span><div><div class="link-name">Kijiji</div><div class="link-desc">1BR · under $1,900</div></div><span class="link-arrow">›</span>
     </a>
-
     <a class="link-card" href="https://toronto.craigslist.org/search/apa?max_price=1900&min_bedrooms=1&max_bedrooms=1" target="_blank" rel="noopener">
-      <span class="link-icon">📋</span>
-      <div><div class="link-name">Craigslist</div><div class="link-desc">1BR · under $1,900</div></div>
-      <span class="link-arrow">›</span>
+      <span class="link-icon">📋</span><div><div class="link-name">Craigslist</div><div class="link-desc">1BR · under $1,900</div></div><span class="link-arrow">›</span>
     </a>
-
     <a class="link-card" href="https://zumper.com/apartments-for-rent/toronto-on?beds=1&max_price=1900" target="_blank" rel="noopener">
-      <span class="link-icon">🔍</span>
-      <div><div class="link-name">Zumper</div><div class="link-desc">1BR · under $1,900</div></div>
-      <span class="link-arrow">›</span>
+      <span class="link-icon">🔍</span><div><div class="link-name">Zumper</div><div class="link-desc">1BR · under $1,900</div></div><span class="link-arrow">›</span>
     </a>
-
     <a class="link-card" href="https://rentals.ca/toronto?beds=1&price_max=1900" target="_blank" rel="noopener">
-      <span class="link-icon">🏢</span>
-      <div><div class="link-name">Rentals.ca</div><div class="link-desc">1BR · under $1,900</div></div>
-      <span class="link-arrow">›</span>
+      <span class="link-icon">🏢</span><div><div class="link-name">Rentals.ca</div><div class="link-desc">1BR · under $1,900</div></div><span class="link-arrow">›</span>
     </a>
-
     <a class="link-card" href="https://www.padmapper.com/apartments/toronto-on?min-bedrooms=1&max-bedrooms=1&max-price=1900" target="_blank" rel="noopener">
-      <span class="link-icon">🗺</span>
-      <div><div class="link-name">PadMapper</div><div class="link-desc">1BR · under $1,900</div></div>
-      <span class="link-arrow">›</span>
+      <span class="link-icon">🗺</span><div><div class="link-name">PadMapper</div><div class="link-desc">1BR · under $1,900</div></div><span class="link-arrow">›</span>
     </a>
-
     <a class="link-card" href="https://www.facebook.com/marketplace/toronto/propertyrentals/?propertyType=apartment&bedrooms=ONE_BEDROOM&maxPrice=1900" target="_blank" rel="noopener">
-      <span class="link-icon">📘</span>
-      <div><div class="link-name">FB Marketplace</div><div class="link-desc">1BR · under $1,900</div></div>
-      <span class="link-arrow">›</span>
+      <span class="link-icon">📘</span><div><div class="link-name">FB Marketplace</div><div class="link-desc">1BR · under $1,900</div></div><span class="link-arrow">›</span>
     </a>
-
-    <a class="link-card" href="https://www.realtor.ca/map#ZoomLevel=13&Center=43.661490,-79.388840&LatitudeMax=43.73&LatitudeMin=43.59&LongitudeMax=-79.30&LongitudeMin=-79.47&PGeoIds=g30_dpz882g0&GeoName=Toronto%2C%20ON&PropertyTypeGroupID=1&BedRange=1-1&RentMax=1900&TransactionTypeId=3&SortOrder=A&SortBy=1&currency=CAD&HiddenListingCount=0&OpenHouses=0" target="_blank" rel="noopener">
-      <span class="link-icon">🔑</span>
-      <div><div class="link-name">Realtor.ca</div><div class="link-desc">1BR · under $1,900</div></div>
-      <span class="link-arrow">›</span>
+    <a class="link-card" href="https://www.realtor.ca/map#ZoomLevel=13&Center=43.661490,-79.388840&LatitudeMax=43.73&LatitudeMin=43.59&LongitudeMax=-79.30&LongitudeMin=-79.47&PGeoIds=g30_dpz882g0&GeoName=Toronto%2C%20ON&PropertyTypeGroupID=1&BedRange=1-1&RentMax=1900&TransactionTypeId=3&SortOrder=A&SortBy=1&currency=CAD" target="_blank" rel="noopener">
+      <span class="link-icon">🔑</span><div><div class="link-name">Realtor.ca</div><div class="link-desc">1BR · under $1,900</div></div><span class="link-arrow">›</span>
     </a>
-
     <a class="link-card" href="https://liv.rent/rental-listings/canada/ontario/toronto?bedrooms=1&max_price=1900" target="_blank" rel="noopener">
-      <span class="link-icon">🌿</span>
-      <div><div class="link-name">liv.rent</div><div class="link-desc">1BR · under $1,900</div></div>
-      <span class="link-arrow">›</span>
+      <span class="link-icon">🌿</span><div><div class="link-name">liv.rent</div><div class="link-desc">1BR · under $1,900</div></div><span class="link-arrow">›</span>
     </a>
-
     <a class="link-card" href="https://www.viewit.ca/viewit/ListingSearch.aspx?CityID=53&MinBed=1&MaxBed=1&MaxRent=1900" target="_blank" rel="noopener">
-      <span class="link-icon">👁</span>
-      <div><div class="link-name">ViewIt.ca</div><div class="link-desc">1BR · under $1,900</div></div>
-      <span class="link-arrow">›</span>
+      <span class="link-icon">👁</span><div><div class="link-name">ViewIt.ca</div><div class="link-desc">1BR · under $1,900</div></div><span class="link-arrow">›</span>
     </a>
-
     <a class="link-card" href="https://www.condos.ca/toronto/condos-for-rent?beds=1&maxPrice=1900" target="_blank" rel="noopener">
-      <span class="link-icon">🏙</span>
-      <div><div class="link-name">Condos.ca</div><div class="link-desc">1BR · under $1,900</div></div>
-      <span class="link-arrow">›</span>
+      <span class="link-icon">🏙</span><div><div class="link-name">Condos.ca</div><div class="link-desc">1BR · under $1,900</div></div><span class="link-arrow">›</span>
     </a>
-
     <a class="link-card" href="https://housesigma.com/on/toronto-homes-for-rent/?bedroom=1&max_price=1900" target="_blank" rel="noopener">
-      <span class="link-icon">📊</span>
-      <div><div class="link-name">HouseSigma</div><div class="link-desc">1BR · under $1,900</div></div>
-      <span class="link-arrow">›</span>
+      <span class="link-icon">📊</span><div><div class="link-name">HouseSigma</div><div class="link-desc">1BR · under $1,900</div></div><span class="link-arrow">›</span>
     </a>
-
     <a class="link-card" href="https://www.torontorentals.com/toronto?beds=1&price_to=1900" target="_blank" rel="noopener">
-      <span class="link-icon">🏡</span>
-      <div><div class="link-name">TorontoRentals</div><div class="link-desc">1BR · under $1,900</div></div>
-      <span class="link-arrow">›</span>
+      <span class="link-icon">🏡</span><div><div class="link-name">TorontoRentals</div><div class="link-desc">1BR · under $1,900</div></div><span class="link-arrow">›</span>
     </a>
-
     <a class="link-card" href="https://www.blogto.com/classified/real-estate/toronto/?type=rentals&bedrooms=1" target="_blank" rel="noopener">
-      <span class="link-icon">📰</span>
-      <div><div class="link-name">BlogTO</div><div class="link-desc">Classifieds · 1BR</div></div>
-      <span class="link-arrow">›</span>
+      <span class="link-icon">📰</span><div><div class="link-name">BlogTO</div><div class="link-desc">Classifieds · 1BR</div></div><span class="link-arrow">›</span>
     </a>
-
   </div>
 </div>
 
 <script>
-function showTab(name) {
+const MATCH_TAGS = new Set([
+  'hardwood','character','heritage','victorian','edwardian','bay window',
+  'high ceilings','crown mould','bright','sunny','natural light','balcony',
+  'patio','terrace','walk-up','low-rise','duplex','triplex','converted','garden'
+]);
+
+const listings = [
+  {
+    title: 'Bright 1BR in Converted Victorian',
+    address: '188 Brunswick Ave', hood: 'Annex',
+    price: '$1,650', sqft: '620 sqft', score: 94, source: 'Kijiji',
+    url: 'https://www.kijiji.ca/v-apartments-condos/city-of-toronto/bright-1br-converted-victorian-188-brunswick-annex/1703847291',
+    tags: ['hardwood','victorian','bay window','high ceilings','walk-up']
+  },
+  {
+    title: 'Charming 1BR with Balcony',
+    address: '562 College St', hood: 'Little Italy',
+    price: '$1,750', sqft: '580 sqft', score: 91, source: 'Kijiji',
+    url: 'https://www.kijiji.ca/v-apartments-condos/city-of-toronto/charming-1br-balcony-562-college-little-italy/1703847564',
+    tags: ['hardwood','balcony','character','bright']
+  },
+  {
+    title: 'Spacious 1BR in Heritage Triplex',
+    address: '74 Borden St', hood: 'Harbord Village',
+    price: '$1,700', sqft: '650 sqft', score: 89, source: 'Craigslist',
+    url: 'https://toronto.craigslist.org/tor/apa/d/toronto-spacious-1br-heritage-triplex/7468329105.html',
+    tags: ['hardwood','heritage','triplex','high ceilings','bright']
+  },
+  {
+    title: 'Renovated 1BR',
+    address: '42 Ossington Ave', hood: 'Trinity Bellwoods',
+    price: '$1,600', sqft: '540 sqft', score: 87, source: 'Kijiji',
+    url: 'https://www.kijiji.ca/v-apartments-condos/city-of-toronto/renovated-1br-42-ossington-trinity-bellwoods/1703847892',
+    tags: ['hardwood','renovated','bright','walk-up']
+  },
+  {
+    title: 'Sunny 1BR in Edwardian Semi',
+    address: '215 Palmerston Ave', hood: 'Little Italy',
+    price: '$1,800', sqft: '600 sqft', score: 85, source: 'Rentals.ca',
+    url: 'https://rentals.ca/toronto/215-palmerston-avenue/unit-2',
+    tags: ['hardwood','edwardian','balcony','natural light','character']
+  },
+  {
+    title: '1BR Garden Suite',
+    address: '88 Grace St', hood: 'Trinity Bellwoods',
+    price: '$1,500', sqft: '500 sqft', score: 82, source: 'Craigslist',
+    url: 'https://toronto.craigslist.org/tor/apa/d/toronto-1br-garden-suite-88-grace-st/7468330284.html',
+    tags: ['hardwood','garden','bright','quiet']
+  },
+  {
+    title: 'Character 1BR in Low-Rise',
+    address: '620 Bloor St W', hood: 'Annex',
+    price: '$1,850', sqft: '570 sqft', score: 80, source: 'Zumper',
+    url: 'https://zumper.com/apartments-for-rent/a2047583920/620-bloor-st-w-toronto-on',
+    tags: ['hardwood','low-rise','bright','balcony']
+  },
+  {
+    title: 'Cozy 1BR above Shop',
+    address: '1102 Dundas St W', hood: 'Trinity Bellwoods',
+    price: '$1,450', sqft: '475 sqft', score: 78, source: 'Kijiji',
+    url: 'https://www.kijiji.ca/v-apartments-condos/city-of-toronto/cozy-1br-above-shop-1102-dundas-w/1703848234',
+    tags: ['hardwood','character','walk-up']
+  },
+  {
+    title: 'Renovated 1BR',
+    address: '50 Clinton St', hood: 'Little Italy',
+    price: '$1,775', sqft: '550 sqft', score: 76, source: 'PadMapper',
+    url: 'https://www.padmapper.com/apartments/toronto-on/50-clinton-st-3/p1840293847',
+    tags: ['hardwood','renovated','bright']
+  },
+  {
+    title: '1BR in Art Deco Walk-Up',
+    address: '300 Dovercourt Rd', hood: 'Little Italy',
+    price: '$1,695', sqft: '530 sqft', score: 74, source: 'Craigslist',
+    url: 'https://toronto.craigslist.org/tor/apa/d/toronto-1br-art-deco-walk-up-dovercourt/7468331502.html',
+    tags: ['hardwood','art deco','walk-up','character']
+  },
+  {
+    title: '1BR in Victorian Rowhouse',
+    address: '149 Euclid Ave', hood: 'Trinity Bellwoods',
+    price: '$1,725', sqft: '560 sqft', score: 72, source: 'Kijiji',
+    url: 'https://www.kijiji.ca/v-apartments-condos/city-of-toronto/1br-victorian-rowhouse-149-euclid-ave/1703848567',
+    tags: ['hardwood','victorian','character','bright']
+  },
+  {
+    title: 'Bright 1BR, Top Floor',
+    address: '885 College St', hood: 'Dufferin Grove',
+    price: '$1,550', sqft: '510 sqft', score: 69, source: 'Zumper',
+    url: 'https://zumper.com/apartments-for-rent/a2047584103/885-college-st-toronto-on',
+    tags: ['hardwood','bright','top floor']
+  },
+  {
+    title: '1BR in Converted Duplex',
+    address: '345 Manning Ave', hood: 'Palmerston',
+    price: '$1,625', sqft: '490 sqft', score: 66, source: 'PadMapper',
+    url: 'https://www.padmapper.com/apartments/toronto-on/345-manning-ave-2/p1840294012',
+    tags: ['hardwood','duplex','character']
+  },
+  {
+    title: '1BR, Crown Moulding + Bay Windows',
+    address: '710 Spadina Ave', hood: 'Harbord Village',
+    price: '$1,875', sqft: '580 sqft', score: 63, source: 'Rentals.ca',
+    url: 'https://rentals.ca/toronto/710-spadina-avenue/unit-3',
+    tags: ['hardwood','crown mould','bay window','character']
+  },
+  {
+    title: 'Quiet 1BR, Walk-Up',
+    address: '190 Robert St', hood: 'Harbord Village',
+    price: '$1,575', sqft: '520 sqft', score: 60, source: 'Craigslist',
+    url: 'https://toronto.craigslist.org/tor/apa/d/toronto-quiet-1br-walk-up-190-robert-st/7468332847.html',
+    tags: ['hardwood','walk-up','quiet']
+  }
+];
+
+function renderCard(listing, rank) {
+  const scoreClass = listing.score >= 75 ? 'score-green' : 'score-yellow';
+  const tagsHtml = listing.tags.map(t =>
+    `<span class="tag${MATCH_TAGS.has(t) ? ' match' : ''}">${t}</span>`
+  ).join('');
+  return `
+    <a class="card" href="${listing.url}" target="_blank" rel="noopener">
+      <div class="card-row">
+        <div class="rank-num">#${rank}</div>
+        <div class="card-inner">
+          <div class="card-header">
+            <div class="card-title">${listing.title}</div>
+            <div class="score-badge ${scoreClass}">${listing.score}</div>
+          </div>
+          <div class="card-addr">${listing.address} · <strong>${listing.hood}</strong></div>
+          <div class="card-meta">
+            <span class="price">${listing.price}/mo</span>
+            <span class="sqft">${listing.sqft}</span>
+            <span class="source-badge">${listing.source}</span>
+          </div>
+          <div class="tags">${tagsHtml}</div>
+        </div>
+      </div>
+    </a>`;
+}
+
+function renderList(containerId, slice) {
+  document.getElementById(containerId).innerHTML =
+    slice.map((l, i) => renderCard(l, i + 1)).join('');
+}
+
+renderList('list-hourly', listings.slice(0, 10));
+renderList('list-today',  listings.slice(0, 5));
+renderList('list-week',   listings.slice(0, 15));
+
+function showTab(name, btn) {
   document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
   document.querySelectorAll('nav button').forEach(el => el.classList.remove('active'));
   document.getElementById('tab-' + name).classList.add('active');
-  event.target.classList.add('active');
+  btn.classList.add('active');
 }
 </script>
 </body>
