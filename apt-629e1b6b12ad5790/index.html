@@ -94,7 +94,6 @@
     padding-left: 2px;
   }
 
-  /* Cards are <a> tags — reset link styles, add tap feedback */
   a.card {
     display: block;
     background: var(--card);
@@ -143,6 +142,9 @@
     font-size: 13px;
     color: var(--sub);
     margin-top: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .card-addr strong { color: var(--text); font-weight: 500; }
 
@@ -155,7 +157,6 @@
   }
 
   .price { font-size: 17px; font-weight: 700; letter-spacing: -0.5px; }
-
   .sqft { font-size: 13px; color: var(--sub); }
 
   .source-badge {
@@ -194,7 +195,6 @@
   .card-row { display: flex; gap: 10px; }
   .card-inner { flex: 1; min-width: 0; }
 
-  /* Search Links tab */
   .links-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 
   a.link-card {
@@ -235,7 +235,7 @@
 
 <header>
   <h1>🏙 Toronto Apartment Scanner</h1>
-  <p><span class="pulse"></span>Last scanned: Today 10:42 AM · 1BR under $1,900</p>
+  <p><span class="pulse"></span>Last scanned: 2026-05-22 17:47 · 25 new · 1BR under $1,900</p>
 </header>
 
 <nav>
@@ -246,7 +246,7 @@
 </nav>
 
 <div class="tab-content active" id="tab-hourly">
-  <p class="section-label">Refreshed hourly · Sorted by score</p>
+  <p class="section-label">Latest scan · 25 new listings found</p>
   <div id="list-hourly"></div>
 </div>
 
@@ -261,199 +261,430 @@
 </div>
 
 <div class="tab-content" id="tab-links">
-  <p class="search-note"><strong>Pre-filtered links</strong> for Toronto 1BR under $1,900. Tap to open directly — new listings appear here daily.</p>
+  <p class="search-note"><strong>Pre-filtered links</strong> for Toronto 1BR under $1,900. Tap to open — these are the same sources the scanner monitors.</p>
   <div class="links-grid">
-    <a class="link-card" href="https://www.kijiji.ca/b-apartments-condos/city-of-toronto/1-bedroom/k0c37l1700273a54?ad=offering&price=0__1900" target="_blank" rel="noopener">
+    <a class="link-card" href="https://www.kijiji.ca/b-apartments-condos/city-of-toronto/1+bedroom/c37l1700273?price=__1900&bedrooms=1&ad=offering&sort=dateDesc" target="_blank" rel="noopener">
       <span class="link-icon">🏠</span><div><div class="link-name">Kijiji</div><div class="link-desc">1BR · under $1,900</div></div><span class="link-arrow">›</span>
     </a>
-    <a class="link-card" href="https://toronto.craigslist.org/search/apa?max_price=1900&min_bedrooms=1&max_bedrooms=1" target="_blank" rel="noopener">
-      <span class="link-icon">📋</span><div><div class="link-name">Craigslist</div><div class="link-desc">1BR · under $1,900</div></div><span class="link-arrow">›</span>
-    </a>
-    <a class="link-card" href="https://zumper.com/apartments-for-rent/toronto-on?beds=1&max_price=1900" target="_blank" rel="noopener">
-      <span class="link-icon">🔍</span><div><div class="link-name">Zumper</div><div class="link-desc">1BR · under $1,900</div></div><span class="link-arrow">›</span>
-    </a>
-    <a class="link-card" href="https://rentals.ca/toronto?beds=1&price_max=1900" target="_blank" rel="noopener">
+    <a class="link-card" href="https://rentals.ca/toronto?rentrange=0-1900&beds=1&type=apartment" target="_blank" rel="noopener">
       <span class="link-icon">🏢</span><div><div class="link-name">Rentals.ca</div><div class="link-desc">1BR · under $1,900</div></div><span class="link-arrow">›</span>
     </a>
-    <a class="link-card" href="https://www.padmapper.com/apartments/toronto-on?min-bedrooms=1&max-bedrooms=1&max-price=1900" target="_blank" rel="noopener">
+    <a class="link-card" href="https://toronto.craigslist.org/search/apa?min_price=800&max_price=1900&min_bedrooms=1&max_bedrooms=1" target="_blank" rel="noopener">
+      <span class="link-icon">📋</span><div><div class="link-name">Craigslist</div><div class="link-desc">1BR · under $1,900</div></div><span class="link-arrow">›</span>
+    </a>
+    <a class="link-card" href="https://www.zumper.com/apartments-for-rent/toronto-on?beds=1&price-max=1900" target="_blank" rel="noopener">
+      <span class="link-icon">🔍</span><div><div class="link-name">Zumper</div><div class="link-desc">1BR · under $1,900</div></div><span class="link-arrow">›</span>
+    </a>
+    <a class="link-card" href="https://www.padmapper.com/apartments/toronto-on?box=-79.46,43.64,-79.4,43.675&min-bedrooms=1&max-bedrooms=1&max-price=1900" target="_blank" rel="noopener">
       <span class="link-icon">🗺</span><div><div class="link-name">PadMapper</div><div class="link-desc">1BR · under $1,900</div></div><span class="link-arrow">›</span>
     </a>
-    <a class="link-card" href="https://www.facebook.com/marketplace/toronto/propertyrentals/?propertyType=apartment&bedrooms=ONE_BEDROOM&maxPrice=1900" target="_blank" rel="noopener">
-      <span class="link-icon">📘</span><div><div class="link-name">FB Marketplace</div><div class="link-desc">1BR · under $1,900</div></div><span class="link-arrow">›</span>
+    <a class="link-card" href="https://www.facebook.com/marketplace/toronto/propertyrentals?minPrice=800&maxPrice=1900&minBedrooms=1&maxBedrooms=1" target="_blank" rel="noopener">
+      <span class="link-icon">📘</span><div><div class="link-name">Facebook Marketplace</div><div class="link-desc">1BR · under $1,900</div></div><span class="link-arrow">›</span>
     </a>
-    <a class="link-card" href="https://www.realtor.ca/map#ZoomLevel=13&Center=43.661490,-79.388840&LatitudeMax=43.73&LatitudeMin=43.59&LongitudeMax=-79.30&LongitudeMin=-79.47&PGeoIds=g30_dpz882g0&GeoName=Toronto%2C%20ON&PropertyTypeGroupID=1&BedRange=1-1&RentMax=1900&TransactionTypeId=3&SortOrder=A&SortBy=1&currency=CAD" target="_blank" rel="noopener">
+    <a class="link-card" href="https://www.realtor.ca/map#ZoomLevel=14&LatitudeMax=43.675&LatitudeMin=43.64&LongitudeMax=-79.4&LongitudeMin=-79.46&Sort=6-D&PropertyTypeGroupID=1&TransactionTypeId=3&BedRange=1-1&PriceMax=1900" target="_blank" rel="noopener">
       <span class="link-icon">🔑</span><div><div class="link-name">Realtor.ca</div><div class="link-desc">1BR · under $1,900</div></div><span class="link-arrow">›</span>
     </a>
-    <a class="link-card" href="https://liv.rent/rental-listings/canada/ontario/toronto?bedrooms=1&max_price=1900" target="_blank" rel="noopener">
+    <a class="link-card" href="https://liv.rent/rental-listings/toronto?beds=1&max_price=1900&property_type=apartment" target="_blank" rel="noopener">
       <span class="link-icon">🌿</span><div><div class="link-name">liv.rent</div><div class="link-desc">1BR · under $1,900</div></div><span class="link-arrow">›</span>
     </a>
-    <a class="link-card" href="https://www.viewit.ca/viewit/ListingSearch.aspx?CityID=53&MinBed=1&MaxBed=1&MaxRent=1900" target="_blank" rel="noopener">
+    <a class="link-card" href="https://www.viewit.ca/toronto-apartments-for-rent/?bedroom=1&price_max=1900" target="_blank" rel="noopener">
       <span class="link-icon">👁</span><div><div class="link-name">ViewIt.ca</div><div class="link-desc">1BR · under $1,900</div></div><span class="link-arrow">›</span>
     </a>
-    <a class="link-card" href="https://www.condos.ca/toronto/condos-for-rent?beds=1&maxPrice=1900" target="_blank" rel="noopener">
+    <a class="link-card" href="https://condos.ca/toronto/rentals?beds=1-1&rent_max=1900&type=apartment" target="_blank" rel="noopener">
       <span class="link-icon">🏙</span><div><div class="link-name">Condos.ca</div><div class="link-desc">1BR · under $1,900</div></div><span class="link-arrow">›</span>
     </a>
-    <a class="link-card" href="https://housesigma.com/on/toronto-homes-for-rent/?bedroom=1&max_price=1900" target="_blank" rel="noopener">
+    <a class="link-card" href="https://housesigma.com/bkv2/web/rent/listing?municipality=10343&bedrooms=1&price_max=1900" target="_blank" rel="noopener">
       <span class="link-icon">📊</span><div><div class="link-name">HouseSigma</div><div class="link-desc">1BR · under $1,900</div></div><span class="link-arrow">›</span>
     </a>
-    <a class="link-card" href="https://www.torontorentals.com/toronto?beds=1&price_to=1900" target="_blank" rel="noopener">
+    <a class="link-card" href="https://torontorentals.com/toronto?beds=1&type=apartment&p_max=1900" target="_blank" rel="noopener">
       <span class="link-icon">🏡</span><div><div class="link-name">TorontoRentals</div><div class="link-desc">1BR · under $1,900</div></div><span class="link-arrow">›</span>
     </a>
-    <a class="link-card" href="https://www.blogto.com/classified/real-estate/toronto/?type=rentals&bedrooms=1" target="_blank" rel="noopener">
-      <span class="link-icon">📰</span><div><div class="link-name">BlogTO</div><div class="link-desc">Classifieds · 1BR</div></div><span class="link-arrow">›</span>
+    <a class="link-card" href="https://www.blogto.com/classifieds/toronto-apartments-for-rent/" target="_blank" rel="noopener">
+      <span class="link-icon">📰</span><div><div class="link-name">BlogTO</div><div class="link-desc">1BR · under $1,900</div></div><span class="link-arrow">›</span>
     </a>
   </div>
 </div>
 
 <script>
 const MATCH_TAGS = new Set([
-  'hardwood','character','heritage','victorian','edwardian','bay window',
-  'high ceilings','crown mould','bright','sunny','natural light','balcony',
-  'patio','terrace','walk-up','low-rise','duplex','triplex','converted','garden'
+  'renovated','balcony','bright','outdoor space','outdoor','studio','heritage',
+  'hardwood','victorian','edwardian','character','bay window','high ceilings',
+  'walk-up','low-rise','duplex','triplex','converted','quiet','top floor'
 ]);
 
-const listings = [
+const hourlyListings = [
   {
-    title: 'Bright 1BR in Converted Victorian',
-    address: '188 Brunswick Ave', hood: 'Annex',
-    price: '$1,650', sqft: '620 sqft', score: 94, source: 'Kijiji',
-    url: 'https://www.kijiji.ca/v-apartments-condos/city-of-toronto/bright-1br-converted-victorian-188-brunswick-annex/1703847291',
-    tags: ['hardwood','victorian','bay window','high ceilings','walk-up']
+    title: "Newly Renovated Studio on the Danforth with outdoor space",
+    address: "Toronto, ON M4J 1L8",
+    hood: "East Danforth",
+    price: "$1,700",
+    sqft: "340 sqft",
+    score: 97,
+    source: "Kijiji",
+    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/newly-renovated-studio-on-the-danforth-with-outdoor-space/1735360868",
+    tags: ["renovated", "studio", "outdoor space"]
   },
   {
-    title: 'Charming 1BR with Balcony',
-    address: '562 College St', hood: 'Little Italy',
-    price: '$1,750', sqft: '580 sqft', score: 91, source: 'Kijiji',
-    url: 'https://www.kijiji.ca/v-apartments-condos/city-of-toronto/charming-1br-balcony-562-college-little-italy/1703847564',
-    tags: ['hardwood','balcony','character','bright']
+    title: "1 BEDROOM APARTMENT FOR RENT",
+    address: "1920 Weston Road, Toronto, ON, M9N 1W4",
+    hood: "Weston",
+    price: "$1,825",
+    sqft: "",
+    score: 97,
+    source: "Kijiji",
+    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/1-bedroom-apartment-for-rent/1685201413",
+    tags: []
   },
   {
-    title: 'Spacious 1BR in Heritage Triplex',
-    address: '74 Borden St', hood: 'Harbord Village',
-    price: '$1,700', sqft: '650 sqft', score: 89, source: 'Craigslist',
-    url: 'https://toronto.craigslist.org/tor/apa/d/toronto-spacious-1br-heritage-triplex/7468329105.html',
-    tags: ['hardwood','heritage','triplex','high ceilings','bright']
+    title: "2 Bright Rooms (2nd Floor) \u2013 North York in a Rare, Safe Area",
+    address: "North York, ON M3H 3V7",
+    hood: "North York",
+    price: "$880",
+    sqft: "",
+    score: 83,
+    source: "Kijiji",
+    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/2-bright-rooms-2nd-floor-north-york-in-a-rare-safe-area/1738000015",
+    tags: ["bright"]
   },
   {
-    title: 'Renovated 1BR',
-    address: '42 Ossington Ave', hood: 'Trinity Bellwoods',
-    price: '$1,600', sqft: '540 sqft', score: 87, source: 'Kijiji',
-    url: 'https://www.kijiji.ca/v-apartments-condos/city-of-toronto/renovated-1br-42-ossington-trinity-bellwoods/1703847892',
-    tags: ['hardwood','renovated','bright','walk-up']
+    title: "Renovated 1 bedroom with balcony at Bathurst and Eglinton",
+    address: "Gardiner Road, Toronto, ON",
+    hood: "Toronto",
+    price: "$1,750",
+    sqft: "526 sqft",
+    score: 80,
+    source: "Kijiji",
+    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/renovated-1-bedroom-with-balcony-at-bathurst-and-eglinton/1737995719",
+    tags: ["renovated", "balcony"]
   },
   {
-    title: 'Sunny 1BR in Edwardian Semi',
-    address: '215 Palmerston Ave', hood: 'Little Italy',
-    price: '$1,800', sqft: '600 sqft', score: 85, source: 'Rentals.ca',
-    url: 'https://rentals.ca/toronto/215-palmerston-avenue/unit-2',
-    tags: ['hardwood','edwardian','balcony','natural light','character']
+    title: "Queen w Spadina,June or July,$1699 utils inc,1br,renov ove\u2026",
+    address: "Toronto, ON M5V 2A9",
+    hood: "Entertainment District",
+    price: "$1,699",
+    sqft: "555 sqft",
+    score: 79,
+    source: "Kijiji",
+    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/queen-w-spadina-june-or-july-1699-utils-inc-1br-renov-over-shop/1737995247",
+    tags: ["utils incl"]
   },
   {
-    title: '1BR Garden Suite',
-    address: '88 Grace St', hood: 'Trinity Bellwoods',
-    price: '$1,500', sqft: '500 sqft', score: 82, source: 'Craigslist',
-    url: 'https://toronto.craigslist.org/tor/apa/d/toronto-1br-garden-suite-88-grace-st/7468330284.html',
-    tags: ['hardwood','garden','bright','quiet']
+    title: "Private Room-1 of 3 Bedroom in Downtown Toronto incl. Util\u2026",
+    address: "458 Spadina Avenue, Toronto, ON",
+    hood: "Toronto",
+    price: "$1,100",
+    sqft: "800 sqft",
+    score: 77,
+    source: "Kijiji",
+    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/private-room-1-of-3-bedroom-in-downtown-toronto-incl-utilities/1738001248",
+    tags: ["private room"]
   },
   {
-    title: 'Character 1BR in Low-Rise',
-    address: '620 Bloor St W', hood: 'Annex',
-    price: '$1,850', sqft: '570 sqft', score: 80, source: 'Zumper',
-    url: 'https://zumper.com/apartments-for-rent/a2047583920/620-bloor-st-w-toronto-on',
-    tags: ['hardwood','low-rise','bright','balcony']
+    title: "70 Spadina Road - Studio Apartment for Rent",
+    address: "70 Spadina Road, Toronto, ON, M5R 2T6",
+    hood: "The Annex",
+    price: "$1,599",
+    sqft: "376 sqft",
+    score: 76,
+    source: "Kijiji",
+    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/70-spadina-road-studio-apartment-for-rent/1736884558",
+    tags: ["studio"]
   },
   {
-    title: 'Cozy 1BR above Shop',
-    address: '1102 Dundas St W', hood: 'Trinity Bellwoods',
-    price: '$1,450', sqft: '475 sqft', score: 78, source: 'Kijiji',
-    url: 'https://www.kijiji.ca/v-apartments-condos/city-of-toronto/cozy-1br-above-shop-1102-dundas-w/1703848234',
-    tags: ['hardwood','character','walk-up']
+    title: "Best Deal! Very Spacious! Quite Bright! One Bedroom Unit R\u2026",
+    address: "Pineway Blvd, North York, ON",
+    hood: "North York",
+    price: "$789",
+    sqft: "250 sqft",
+    score: 72,
+    source: "Kijiji",
+    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/best-deal-very-spacious-quite-bright-one-bedroom-unit-rent/1737994475",
+    tags: ["bright", "spacious"]
   },
   {
-    title: 'Renovated 1BR',
-    address: '50 Clinton St', hood: 'Little Italy',
-    price: '$1,775', sqft: '550 sqft', score: 76, source: 'PadMapper',
-    url: 'https://www.padmapper.com/apartments/toronto-on/50-clinton-st-3/p1840293847',
-    tags: ['hardwood','renovated','bright']
+    title: "Quiet Clean Studio Apartment for Rent \u2013 Yonge & Finch Nort\u2026",
+    address: "North York, ON M2N 2J2",
+    hood: "Yonge & Finch",
+    price: "$1,750",
+    sqft: "350 sqft",
+    score: 70,
+    source: "Kijiji",
+    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/quiet-clean-studio-apartment-for-rent-yonge-finch-north-york/1737994583",
+    tags: ["studio", "quiet"]
   },
   {
-    title: '1BR in Art Deco Walk-Up',
-    address: '300 Dovercourt Rd', hood: 'Little Italy',
-    price: '$1,695', sqft: '530 sqft', score: 74, source: 'Craigslist',
-    url: 'https://toronto.craigslist.org/tor/apa/d/toronto-1br-art-deco-walk-up-dovercourt/7468331502.html',
-    tags: ['hardwood','art deco','walk-up','character']
-  },
-  {
-    title: '1BR in Victorian Rowhouse',
-    address: '149 Euclid Ave', hood: 'Trinity Bellwoods',
-    price: '$1,725', sqft: '560 sqft', score: 72, source: 'Kijiji',
-    url: 'https://www.kijiji.ca/v-apartments-condos/city-of-toronto/1br-victorian-rowhouse-149-euclid-ave/1703848567',
-    tags: ['hardwood','victorian','character','bright']
-  },
-  {
-    title: 'Bright 1BR, Top Floor',
-    address: '885 College St', hood: 'Dufferin Grove',
-    price: '$1,550', sqft: '510 sqft', score: 69, source: 'Zumper',
-    url: 'https://zumper.com/apartments-for-rent/a2047584103/885-college-st-toronto-on',
-    tags: ['hardwood','bright','top floor']
-  },
-  {
-    title: '1BR in Converted Duplex',
-    address: '345 Manning Ave', hood: 'Palmerston',
-    price: '$1,625', sqft: '490 sqft', score: 66, source: 'PadMapper',
-    url: 'https://www.padmapper.com/apartments/toronto-on/345-manning-ave-2/p1840294012',
-    tags: ['hardwood','duplex','character']
-  },
-  {
-    title: '1BR, Crown Moulding + Bay Windows',
-    address: '710 Spadina Ave', hood: 'Harbord Village',
-    price: '$1,875', sqft: '580 sqft', score: 63, source: 'Rentals.ca',
-    url: 'https://rentals.ca/toronto/710-spadina-avenue/unit-3',
-    tags: ['hardwood','crown mould','bay window','character']
-  },
-  {
-    title: 'Quiet 1BR, Walk-Up',
-    address: '190 Robert St', hood: 'Harbord Village',
-    price: '$1,575', sqft: '520 sqft', score: 60, source: 'Craigslist',
-    url: 'https://toronto.craigslist.org/tor/apa/d/toronto-quiet-1br-walk-up-190-robert-st/7468332847.html',
-    tags: ['hardwood','walk-up','quiet']
+    title: "Prime Location! Bright & Convenient Basement Rental",
+    address: "Morningside Ave, Scarborough, ON, M1B 2Z6",
+    hood: "Scarborough",
+    price: "$1,300",
+    sqft: "1200 sqft",
+    score: 68,
+    source: "Kijiji",
+    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/prime-location-bright-convenient-basement-rental/1737999030",
+    tags: ["bright", "basement"]
   }
 ];
 
-function renderCard(listing, rank) {
-  const scoreClass = listing.score >= 75 ? 'score-green' : 'score-yellow';
-  const tagsHtml = listing.tags.map(t =>
-    `<span class="tag${MATCH_TAGS.has(t) ? ' match' : ''}">${t}</span>`
-  ).join('');
+const todayListings = [
+  {
+    title: "Newly Renovated Studio on the Danforth with outdoor space",
+    address: "Toronto, ON M4J 1L8",
+    hood: "East Danforth",
+    price: "$1,700",
+    sqft: "340 sqft",
+    score: 97,
+    source: "Kijiji",
+    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/newly-renovated-studio-on-the-danforth-with-outdoor-space/1735360868",
+    tags: ["renovated", "studio", "outdoor space"]
+  },
+  {
+    title: "1 BEDROOM APARTMENT FOR RENT",
+    address: "1920 Weston Road, Toronto, ON, M9N 1W4",
+    hood: "Weston",
+    price: "$1,825",
+    sqft: "",
+    score: 97,
+    source: "Kijiji",
+    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/1-bedroom-apartment-for-rent/1685201413",
+    tags: []
+  },
+  {
+    title: "2 Bright Rooms (2nd Floor) \u2013 North York in a Rare, Safe Area",
+    address: "North York, ON M3H 3V7",
+    hood: "North York",
+    price: "$880",
+    sqft: "",
+    score: 83,
+    source: "Kijiji",
+    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/2-bright-rooms-2nd-floor-north-york-in-a-rare-safe-area/1738000015",
+    tags: ["bright"]
+  },
+  {
+    title: "Renovated 1 bedroom with balcony at Bathurst and Eglinton",
+    address: "Gardiner Road, Toronto, ON",
+    hood: "Toronto",
+    price: "$1,750",
+    sqft: "526 sqft",
+    score: 80,
+    source: "Kijiji",
+    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/renovated-1-bedroom-with-balcony-at-bathurst-and-eglinton/1737995719",
+    tags: ["renovated", "balcony"]
+  },
+  {
+    title: "Queen w Spadina,June or July,$1699 utils inc,1br,renov ove\u2026",
+    address: "Toronto, ON M5V 2A9",
+    hood: "Entertainment District",
+    price: "$1,699",
+    sqft: "555 sqft",
+    score: 79,
+    source: "Kijiji",
+    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/queen-w-spadina-june-or-july-1699-utils-inc-1br-renov-over-shop/1737995247",
+    tags: ["utils incl"]
+  }
+];
+
+const weeklyListings = [
+  {
+    title: "Newly Renovated Studio on the Danforth with outdoor space",
+    address: "Toronto, ON M4J 1L8",
+    hood: "East Danforth",
+    price: "$1,700",
+    sqft: "340 sqft",
+    score: 97,
+    source: "Kijiji",
+    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/newly-renovated-studio-on-the-danforth-with-outdoor-space/1735360868",
+    tags: ["renovated", "studio", "outdoor space"]
+  },
+  {
+    title: "1 BEDROOM APARTMENT FOR RENT",
+    address: "1920 Weston Road, Toronto, ON, M9N 1W4",
+    hood: "Weston",
+    price: "$1,825",
+    sqft: "",
+    score: 97,
+    source: "Kijiji",
+    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/1-bedroom-apartment-for-rent/1685201413",
+    tags: []
+  },
+  {
+    title: "2 Bright Rooms (2nd Floor) \u2013 North York in a Rare, Safe Area",
+    address: "North York, ON M3H 3V7",
+    hood: "North York",
+    price: "$880",
+    sqft: "",
+    score: 83,
+    source: "Kijiji",
+    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/2-bright-rooms-2nd-floor-north-york-in-a-rare-safe-area/1738000015",
+    tags: ["bright"]
+  },
+  {
+    title: "Renovated 1 bedroom with balcony at Bathurst and Eglinton",
+    address: "Gardiner Road, Toronto, ON",
+    hood: "Toronto",
+    price: "$1,750",
+    sqft: "526 sqft",
+    score: 80,
+    source: "Kijiji",
+    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/renovated-1-bedroom-with-balcony-at-bathurst-and-eglinton/1737995719",
+    tags: ["renovated", "balcony"]
+  },
+  {
+    title: "Queen w Spadina,June or July,$1699 utils inc,1br,renov ove\u2026",
+    address: "Toronto, ON M5V 2A9",
+    hood: "Entertainment District",
+    price: "$1,699",
+    sqft: "555 sqft",
+    score: 79,
+    source: "Kijiji",
+    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/queen-w-spadina-june-or-july-1699-utils-inc-1br-renov-over-shop/1737995247",
+    tags: ["utils incl"]
+  },
+  {
+    title: "Private Room-1 of 3 Bedroom in Downtown Toronto incl. Util\u2026",
+    address: "458 Spadina Avenue, Toronto, ON",
+    hood: "Toronto",
+    price: "$1,100",
+    sqft: "800 sqft",
+    score: 77,
+    source: "Kijiji",
+    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/private-room-1-of-3-bedroom-in-downtown-toronto-incl-utilities/1738001248",
+    tags: ["private room"]
+  },
+  {
+    title: "70 Spadina Road - Studio Apartment for Rent",
+    address: "70 Spadina Road, Toronto, ON, M5R 2T6",
+    hood: "The Annex",
+    price: "$1,599",
+    sqft: "376 sqft",
+    score: 76,
+    source: "Kijiji",
+    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/70-spadina-road-studio-apartment-for-rent/1736884558",
+    tags: ["studio"]
+  },
+  {
+    title: "Best Deal! Very Spacious! Quite Bright! One Bedroom Unit R\u2026",
+    address: "Pineway Blvd, North York, ON",
+    hood: "North York",
+    price: "$789",
+    sqft: "250 sqft",
+    score: 72,
+    source: "Kijiji",
+    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/best-deal-very-spacious-quite-bright-one-bedroom-unit-rent/1737994475",
+    tags: ["bright", "spacious"]
+  },
+  {
+    title: "Quiet Clean Studio Apartment for Rent \u2013 Yonge & Finch Nort\u2026",
+    address: "North York, ON M2N 2J2",
+    hood: "Yonge & Finch",
+    price: "$1,750",
+    sqft: "350 sqft",
+    score: 70,
+    source: "Kijiji",
+    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/quiet-clean-studio-apartment-for-rent-yonge-finch-north-york/1737994583",
+    tags: ["studio", "quiet"]
+  },
+  {
+    title: "Prime Location! Bright & Convenient Basement Rental",
+    address: "Morningside Ave, Scarborough, ON, M1B 2Z6",
+    hood: "Scarborough",
+    price: "$1,300",
+    sqft: "1200 sqft",
+    score: 68,
+    source: "Kijiji",
+    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/prime-location-bright-convenient-basement-rental/1737999030",
+    tags: ["bright", "basement"]
+  },
+  {
+    title: "BEAUTIFUL 1 BR APARTMENT ON FINCH & SENTINEL **UTILITIES I\u2026",
+    address: "391 Sentinel Road, Toronto, ON, M3J 1V4",
+    hood: "North York",
+    price: "$1,795",
+    sqft: "",
+    score: 67,
+    source: "Kijiji",
+    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/beautiful-1-br-apartment-on-finch-sentinel-utilities-incl/1737999955",
+    tags: ["utils incl"]
+  },
+  {
+    title: "Bachelor apartement in great location, Bayview and Davisvi\u2026",
+    address: "657 Balliol Street, Toronto, ON, M4S 1E6",
+    hood: "Davisville",
+    price: "$1,600",
+    sqft: "",
+    score: 64,
+    source: "Kijiji",
+    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/bachelor-apartement-in-great-location-bayview-and-davisville/1735229585",
+    tags: ["studio"]
+  },
+  {
+    title: "1 Bedroom Apartment for Rent - 5,7 & 9 Stag Hill Drive",
+    address: "9 Stag Hill Drive, Toronto, ON, M4B 1K7",
+    hood: "East York",
+    price: "$1,698",
+    sqft: "721 sqft",
+    score: 63,
+    source: "Kijiji",
+    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/1-bedroom-apartment-for-rent-5-7-9-stag-hill-drive/1725285193",
+    tags: []
+  },
+  {
+    title: "Scarborough 1 Bedroom LARGE Apartment for Rent - 3895 Lawr\u2026",
+    address: "3895 Lawrence Avenue, Scarborough, ON, M1G 3T3",
+    hood: "Scarborough",
+    price: "$1,899",
+    sqft: "720 sqft",
+    score: 59,
+    source: "Kijiji",
+    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/scarborough-1-bedroom-large-apartment-for-rent-3895-lawrence-a/1721198311",
+    tags: ["spacious"]
+  },
+  {
+    title: "Urgent Renting out 1 Bedroom Basement Apartment in North Y\u2026",
+    address: "North York, ON M3C 4A1",
+    hood: "Don Mills",
+    price: "$1,400",
+    sqft: "500 sqft",
+    score: 59,
+    source: "Kijiji",
+    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/urgent-renting-out-1-bedroom-basement-apartment-in-north-york/1737995376",
+    tags: ["basement"]
+  }
+];
+
+function renderCard(l, rank) {
+  const scoreClass = l.score >= 75 ? 'score-green' : 'score-yellow';
+  const sqftHtml = l.sqft ? `<span class="sqft">${l.sqft}</span>` : '';
+  const tagsHtml = l.tags.length
+    ? '<div class="tags">' + l.tags.map(t => `<span class="tag${MATCH_TAGS.has(t) ? ' match' : ''}">${t}</span>`).join('') + '</div>'
+    : '';
   return `
-    <a class="card" href="${listing.url}" target="_blank" rel="noopener">
+    <a class="card" href="${l.url}" target="_blank" rel="noopener">
       <div class="card-row">
         <div class="rank-num">#${rank}</div>
         <div class="card-inner">
           <div class="card-header">
-            <div class="card-title">${listing.title}</div>
-            <div class="score-badge ${scoreClass}">${listing.score}</div>
+            <div class="card-title">${l.title}</div>
+            <div class="score-badge ${scoreClass}">${l.score}</div>
           </div>
-          <div class="card-addr">${listing.address} · <strong>${listing.hood}</strong></div>
+          <div class="card-addr">${l.address} · <strong>${l.hood}</strong></div>
           <div class="card-meta">
-            <span class="price">${listing.price}/mo</span>
-            <span class="sqft">${listing.sqft}</span>
-            <span class="source-badge">${listing.source}</span>
+            <span class="price">${l.price}/mo</span>
+            ${sqftHtml}
+            <span class="source-badge">${l.source}</span>
           </div>
-          <div class="tags">${tagsHtml}</div>
+          ${tagsHtml}
         </div>
       </div>
     </a>`;
 }
 
-function renderList(containerId, slice) {
-  document.getElementById(containerId).innerHTML =
-    slice.map((l, i) => renderCard(l, i + 1)).join('');
+function renderList(id, arr) {
+  document.getElementById(id).innerHTML = arr.map((l, i) => renderCard(l, i + 1)).join('');
 }
 
-renderList('list-hourly', listings.slice(0, 10));
-renderList('list-today',  listings.slice(0, 5));
-renderList('list-week',   listings.slice(0, 15));
+renderList('list-hourly', hourlyListings);
+renderList('list-today',  todayListings);
+renderList('list-week',   weeklyListings);
 
 function showTab(name, btn) {
   document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
