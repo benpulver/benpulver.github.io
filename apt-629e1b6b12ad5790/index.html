@@ -7,227 +7,54 @@
 <title>Toronto Apartment Scanner</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
-    --bg: #f5f5f7;
-    --card: #fff;
-    --border: #e2e2e7;
-    --text: #1d1d1f;
-    --sub: #6e6e73;
-    --green: #28a745;
-    --green-bg: #e9f5ec;
-    --yellow: #d4820a;
-    --yellow-bg: #fef3cd;
-    --tag-bg: #e8f0fe;
-    --tag: #1a56c4;
-    --accent: #0071e3;
-    --radius: 12px;
+    --bg: #f5f5f7; --card: #fff; --border: #e2e2e7;
+    --text: #1d1d1f; --sub: #6e6e73;
+    --green: #28a745; --green-bg: #e9f5ec;
+    --yellow: #d4820a; --yellow-bg: #fef3cd;
+    --tag-bg: #e8f0fe; --tag: #1a56c4;
+    --accent: #0071e3; --radius: 12px;
   }
-
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-  }
-
-  header {
-    background: rgba(255,255,255,0.85);
-    backdrop-filter: saturate(180%) blur(20px);
-    -webkit-backdrop-filter: saturate(180%) blur(20px);
-    border-bottom: 1px solid var(--border);
-    padding: 14px 16px 12px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-
+  body { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+  header { background: rgba(255,255,255,0.85); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); border-bottom: 1px solid var(--border); padding: 14px 16px 12px; position: sticky; top: 0; z-index: 100; }
   header h1 { font-size: 17px; font-weight: 600; letter-spacing: -0.3px; }
   header p { font-size: 12px; color: var(--sub); margin-top: 2px; }
-
-  .pulse {
-    display: inline-block;
-    width: 7px; height: 7px;
-    background: #34c759;
-    border-radius: 50%;
-    margin-right: 5px;
-    animation: pulse 2s infinite;
-  }
+  .pulse { display: inline-block; width: 7px; height: 7px; background: #34c759; border-radius: 50%; margin-right: 5px; animation: pulse 2s infinite; }
   @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
-
-  nav {
-    display: flex;
-    overflow-x: auto;
-    scrollbar-width: none;
-    padding: 0 12px;
-    background: var(--card);
-    border-bottom: 1px solid var(--border);
-  }
+  nav { display: flex; overflow-x: auto; scrollbar-width: none; padding: 0 12px; background: var(--card); border-bottom: 1px solid var(--border); }
   nav::-webkit-scrollbar { display: none; }
-
-  nav button {
-    flex-shrink: 0;
-    background: none;
-    border: none;
-    padding: 12px 14px;
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--sub);
-    cursor: pointer;
-    border-bottom: 2px solid transparent;
-    white-space: nowrap;
-    font-family: inherit;
-    transition: color 0.15s;
-  }
+  nav button { flex-shrink: 0; background: none; border: none; padding: 12px 14px; font-size: 13px; font-weight: 500; color: var(--sub); cursor: pointer; border-bottom: 2px solid transparent; white-space: nowrap; font-family: inherit; transition: color 0.15s; }
   nav button.active { color: var(--accent); border-bottom-color: var(--accent); }
-
   .tab-content { display: none; padding: 14px 12px; }
   .tab-content.active { display: block; }
-
-  .section-label {
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: var(--sub);
-    margin-bottom: 10px;
-    padding-left: 2px;
-  }
-
-  a.card {
-    display: block;
-    background: var(--card);
-    border-radius: var(--radius);
-    padding: 14px;
-    margin-bottom: 10px;
-    border: 1px solid var(--border);
-    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-    text-decoration: none;
-    color: inherit;
-    -webkit-tap-highlight-color: transparent;
-    transition: background 0.1s;
-  }
+  .section-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--sub); margin-bottom: 10px; padding-left: 2px; }
+  a.card { display: block; background: var(--card); border-radius: var(--radius); padding: 14px; margin-bottom: 10px; border: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,0.04); text-decoration: none; color: inherit; -webkit-tap-highlight-color: transparent; transition: background 0.1s; }
   a.card:active { background: #f0f0f5; }
-
-  .card-header {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 8px;
-  }
-
-  .card-title {
-    font-size: 15px;
-    font-weight: 600;
-    letter-spacing: -0.2px;
-    line-height: 1.3;
-    flex: 1;
-  }
-
-  .score-badge {
-    flex-shrink: 0;
-    width: 38px; height: 38px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: -0.5px;
-  }
+  .card-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+  .card-title { font-size: 15px; font-weight: 600; letter-spacing: -0.2px; line-height: 1.3; flex: 1; }
+  .score-badge { flex-shrink: 0; width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; letter-spacing: -0.5px; }
   .score-green { background: var(--green-bg); color: var(--green); }
   .score-yellow { background: var(--yellow-bg); color: var(--yellow); }
-
-  .card-addr {
-    font-size: 13px;
-    color: var(--sub);
-    margin-top: 5px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+  .card-addr { font-size: 13px; color: var(--sub); margin-top: 5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .card-addr strong { color: var(--text); font-weight: 500; }
-
-  .card-meta {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 9px;
-    flex-wrap: wrap;
-  }
-
+  .card-meta { display: flex; align-items: center; gap: 10px; margin-top: 9px; flex-wrap: wrap; }
   .price { font-size: 17px; font-weight: 700; letter-spacing: -0.5px; }
   .sqft { font-size: 13px; color: var(--sub); }
-
-  .source-badge {
-    font-size: 11px;
-    font-weight: 600;
-    padding: 2px 7px;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    color: var(--sub);
-    text-transform: uppercase;
-    letter-spacing: 0.3px;
-  }
-
+  .source-badge { font-size: 11px; font-weight: 600; padding: 2px 7px; background: var(--bg); border: 1px solid var(--border); border-radius: 6px; color: var(--sub); text-transform: uppercase; letter-spacing: 0.3px; }
   .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 9px; }
-
-  .tag {
-    font-size: 11px;
-    font-weight: 500;
-    padding: 3px 8px;
-    border-radius: 6px;
-    background: #f0f0f5;
-    color: #555;
-  }
+  .tag { font-size: 11px; font-weight: 500; padding: 3px 8px; border-radius: 6px; background: #f0f0f5; color: #555; }
   .tag.match { background: var(--tag-bg); color: var(--tag); }
-
-  .rank-num {
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--sub);
-    min-width: 18px;
-    padding-top: 2px;
-    flex-shrink: 0;
-  }
-
+  .rank-num { font-size: 11px; font-weight: 700; color: var(--sub); min-width: 18px; padding-top: 2px; flex-shrink: 0; }
   .card-row { display: flex; gap: 10px; }
   .card-inner { flex: 1; min-width: 0; }
-
   .links-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-
-  a.link-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 14px 12px;
-    text-decoration: none;
-    color: var(--text);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-    transition: background 0.12s;
-    -webkit-tap-highlight-color: transparent;
-  }
+  a.link-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 12px; text-decoration: none; color: var(--text); display: flex; align-items: center; gap: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); transition: background 0.12s; -webkit-tap-highlight-color: transparent; }
   a.link-card:active { background: #f0f0f5; }
-
   .link-icon { font-size: 20px; flex-shrink: 0; }
   .link-name { font-size: 13px; font-weight: 600; line-height: 1.2; }
   .link-desc { font-size: 11px; color: var(--sub); margin-top: 1px; }
   .link-arrow { margin-left: auto; color: var(--sub); font-size: 14px; flex-shrink: 0; }
-
-  .search-note {
-    font-size: 12px;
-    color: var(--sub);
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 10px 12px;
-    margin-bottom: 12px;
-    line-height: 1.5;
-  }
+  .search-note { font-size: 12px; color: var(--sub); background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 10px 12px; margin-bottom: 12px; line-height: 1.5; }
   .search-note strong { color: var(--text); }
 </style>
 </head>
@@ -235,33 +62,30 @@
 
 <header>
   <h1>🏙 Toronto Apartment Scanner</h1>
-  <p><span class="pulse"></span>Last scanned: 2026-05-22 17:47 · 25 new · 1BR under $1,900</p>
+  <p><span class="pulse"></span>Last scanned: 2026-05-22 19:54 · 278 listings · 5 platforms</p>
 </header>
 
 <nav>
-  <button class="active" onclick="showTab('hourly', this)">Hourly Top 10</button>
-  <button onclick="showTab('today', this)">Today's Best 5</button>
-  <button onclick="showTab('week', this)">Week's Best 15</button>
-  <button onclick="showTab('links', this)">Search Links</button>
+  <button class="active" onclick="showTab('hourly',this)">Hourly Top 10</button>
+  <button onclick="showTab('today',this)">Today's Best 5</button>
+  <button onclick="showTab('week',this)">Week's Best 15</button>
+  <button onclick="showTab('links',this)">Search Links</button>
 </nav>
 
 <div class="tab-content active" id="tab-hourly">
-  <p class="section-label">Latest scan · 25 new listings found</p>
+  <p class="section-label">Latest scan · sorted by score</p>
   <div id="list-hourly"></div>
 </div>
-
 <div class="tab-content" id="tab-today">
-  <p class="section-label">Top 5 · Discovered today</p>
+  <p class="section-label">Top 5 · today's highest scores</p>
   <div id="list-today"></div>
 </div>
-
 <div class="tab-content" id="tab-week">
-  <p class="section-label">Top 15 · Past 7 days</p>
+  <p class="section-label">Top 15 · past 7 days</p>
   <div id="list-week"></div>
 </div>
-
 <div class="tab-content" id="tab-links">
-  <p class="search-note"><strong>Pre-filtered links</strong> for Toronto 1BR under $1,900. Tap to open — these are the same sources the scanner monitors.</p>
+  <p class="search-note"><strong>Pre-filtered links</strong> — same 5 sources the scanner monitors, plus manual extras. Tap to search directly.</p>
   <div class="links-grid">
     <a class="link-card" href="https://www.kijiji.ca/b-apartments-condos/city-of-toronto/1+bedroom/c37l1700273?price=__1900&bedrooms=1&ad=offering&sort=dateDesc" target="_blank" rel="noopener">
       <span class="link-icon">🏠</span><div><div class="link-name">Kijiji</div><div class="link-desc">1BR · under $1,900</div></div><span class="link-arrow">›</span>
@@ -272,7 +96,7 @@
     <a class="link-card" href="https://toronto.craigslist.org/search/apa?min_price=800&max_price=1900&min_bedrooms=1&max_bedrooms=1" target="_blank" rel="noopener">
       <span class="link-icon">📋</span><div><div class="link-name">Craigslist</div><div class="link-desc">1BR · under $1,900</div></div><span class="link-arrow">›</span>
     </a>
-    <a class="link-card" href="https://www.zumper.com/apartments-for-rent/toronto-on?beds=1&price-max=1900" target="_blank" rel="noopener">
+    <a class="link-card" href="https://www.zumper.com/apartments-for-rent/toronto-on/1-beds?price-max=1900" target="_blank" rel="noopener">
       <span class="link-icon">🔍</span><div><div class="link-name">Zumper</div><div class="link-desc">1BR · under $1,900</div></div><span class="link-arrow">›</span>
     </a>
     <a class="link-card" href="https://www.padmapper.com/apartments/toronto-on?box=-79.46,43.64,-79.4,43.675&min-bedrooms=1&max-bedrooms=1&max-price=1900" target="_blank" rel="noopener">
@@ -307,389 +131,79 @@
 
 <script>
 const MATCH_TAGS = new Set([
-  'renovated','balcony','bright','outdoor space','outdoor','studio','heritage',
-  'hardwood','victorian','edwardian','character','bay window','high ceilings',
-  'walk-up','low-rise','duplex','triplex','converted','quiet','top floor'
+  'renovated','balcony','bright','outdoor space','studio','heritage',
+  'above shop','utils incl','top floor','quiet','central','spacious',
+  'hardwood','character','walk-up','low-rise'
 ]);
 
 const hourlyListings = [
-  {
-    title: "Newly Renovated Studio on the Danforth with outdoor space",
-    address: "Toronto, ON M4J 1L8",
-    hood: "East Danforth",
-    price: "$1,700",
-    sqft: "340 sqft",
-    score: 97,
-    source: "Kijiji",
-    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/newly-renovated-studio-on-the-danforth-with-outdoor-space/1735360868",
-    tags: ["renovated", "studio", "outdoor space"]
-  },
-  {
-    title: "1 BEDROOM APARTMENT FOR RENT",
-    address: "1920 Weston Road, Toronto, ON, M9N 1W4",
-    hood: "Weston",
-    price: "$1,825",
-    sqft: "",
-    score: 97,
-    source: "Kijiji",
-    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/1-bedroom-apartment-for-rent/1685201413",
-    tags: []
-  },
-  {
-    title: "2 Bright Rooms (2nd Floor) \u2013 North York in a Rare, Safe Area",
-    address: "North York, ON M3H 3V7",
-    hood: "North York",
-    price: "$880",
-    sqft: "",
-    score: 83,
-    source: "Kijiji",
-    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/2-bright-rooms-2nd-floor-north-york-in-a-rare-safe-area/1738000015",
-    tags: ["bright"]
-  },
-  {
-    title: "Renovated 1 bedroom with balcony at Bathurst and Eglinton",
-    address: "Gardiner Road, Toronto, ON",
-    hood: "Toronto",
-    price: "$1,750",
-    sqft: "526 sqft",
-    score: 80,
-    source: "Kijiji",
-    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/renovated-1-bedroom-with-balcony-at-bathurst-and-eglinton/1737995719",
-    tags: ["renovated", "balcony"]
-  },
-  {
-    title: "Queen w Spadina,June or July,$1699 utils inc,1br,renov ove\u2026",
-    address: "Toronto, ON M5V 2A9",
-    hood: "Entertainment District",
-    price: "$1,699",
-    sqft: "555 sqft",
-    score: 79,
-    source: "Kijiji",
-    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/queen-w-spadina-june-or-july-1699-utils-inc-1br-renov-over-shop/1737995247",
-    tags: ["utils incl"]
-  },
-  {
-    title: "Private Room-1 of 3 Bedroom in Downtown Toronto incl. Util\u2026",
-    address: "458 Spadina Avenue, Toronto, ON",
-    hood: "Toronto",
-    price: "$1,100",
-    sqft: "800 sqft",
-    score: 77,
-    source: "Kijiji",
-    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/private-room-1-of-3-bedroom-in-downtown-toronto-incl-utilities/1738001248",
-    tags: ["private room"]
-  },
-  {
-    title: "70 Spadina Road - Studio Apartment for Rent",
-    address: "70 Spadina Road, Toronto, ON, M5R 2T6",
-    hood: "The Annex",
-    price: "$1,599",
-    sqft: "376 sqft",
-    score: 76,
-    source: "Kijiji",
-    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/70-spadina-road-studio-apartment-for-rent/1736884558",
-    tags: ["studio"]
-  },
-  {
-    title: "Best Deal! Very Spacious! Quite Bright! One Bedroom Unit R\u2026",
-    address: "Pineway Blvd, North York, ON",
-    hood: "North York",
-    price: "$789",
-    sqft: "250 sqft",
-    score: 72,
-    source: "Kijiji",
-    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/best-deal-very-spacious-quite-bright-one-bedroom-unit-rent/1737994475",
-    tags: ["bright", "spacious"]
-  },
-  {
-    title: "Quiet Clean Studio Apartment for Rent \u2013 Yonge & Finch Nort\u2026",
-    address: "North York, ON M2N 2J2",
-    hood: "Yonge & Finch",
-    price: "$1,750",
-    sqft: "350 sqft",
-    score: 70,
-    source: "Kijiji",
-    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/quiet-clean-studio-apartment-for-rent-yonge-finch-north-york/1737994583",
-    tags: ["studio", "quiet"]
-  },
-  {
-    title: "Prime Location! Bright & Convenient Basement Rental",
-    address: "Morningside Ave, Scarborough, ON, M1B 2Z6",
-    hood: "Scarborough",
-    price: "$1,300",
-    sqft: "1200 sqft",
-    score: 68,
-    source: "Kijiji",
-    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/prime-location-bright-convenient-basement-rental/1737999030",
-    tags: ["bright", "basement"]
-  }
+  {title:"289 BARTON AVENUE Toronto (Annex), Ontario",address:"BARTON AVENUE, Toronto (Annex), ON, M6G1R5",hood:"The Annex",price:"$399",sqft:"",score:100,source:"Kijiji",url:"https://www.kijiji.ca/v-apartments-condos/city-of-toronto/289-barton-avenue-toronto-annex-ontario/1737977037",tags:[]},
+  {title:"Queen w Spadina,June or July,$1699 utils inc,1br,renov over \u2026",address:"Toronto, ON M5V 2A9",hood:"King West",price:"$1,699",sqft:"555 sqft",score:85,source:"Kijiji",url:"https://www.kijiji.ca/v-apartments-condos/city-of-toronto/queen-w-spadina-june-or-july-1699-utils-inc-1br-renov-over-shop/1737995247",tags:["utils incl", "above shop"]},
+  {title:"Renovated bachelor for rent. Rent inclusive. (King and Duffe\u2026",address:"149 Cowan Avenue, Toronto, ON",hood:"Parkdale",price:"$1,100",sqft:"250 sqft",score:84,source:"Kijiji",url:"https://www.kijiji.ca/v-apartments-condos/city-of-toronto/renovated-bachelor-for-rent-rent-inclusive-king-and-dufferin/1733905050",tags:["renovated", "studio", "utils incl"]},
+  {title:"70 Spadina Road - Studio Apartment for Rent",address:"70 Spadina Road, Toronto, ON, M5R 2T6",hood:"The Annex",price:"$1,599",sqft:"376 sqft",score:79,source:"Kijiji",url:"https://www.kijiji.ca/v-apartments-condos/city-of-toronto/70-spadina-road-studio-apartment-for-rent/1736884558",tags:["studio"]},
+  {title:"Renovated 1 bedroom with balcony at Bathurst and Eglinton",address:"Gardiner Road, Toronto, ON",hood:"Bathurst",price:"$1,750",sqft:"526 sqft",score:79,source:"Kijiji",url:"https://www.kijiji.ca/v-apartments-condos/city-of-toronto/renovated-1-bedroom-with-balcony-at-bathurst-and-eglinton/1737995719",tags:["renovated", "balcony"]},
+  {title:"Roncesvalles Village (Sunnyside and Howard Park)",address:"Toronto, ON M6R 2S1",hood:"Roncesvalles",price:"$1,695",sqft:"350 sqft",score:79,source:"Kijiji",url:"https://www.kijiji.ca/v-apartments-condos/city-of-toronto/roncesvalles-village-sunnyside-and-howard-park/1737454631",tags:[]},
+  {title:"Private Room-1 of 3 Bedroom in Downtown Toronto incl. Utilit\u2026",address:"458 Spadina Avenue, Toronto, ON",hood:"Spadina",price:"$1,100",sqft:"800 sqft",score:78,source:"Kijiji",url:"https://www.kijiji.ca/v-apartments-condos/city-of-toronto/private-room-1-of-3-bedroom-in-downtown-toronto-incl-utilities/1738001248",tags:["private room"]},
+  {title:"1 - 911 DOVERCOURT ROAD Toronto (Palmerston-Little Italy), O\u2026",address:"- 911 DOVERCOURT ROAD, Toronto (Palmerston-Little Italy), ON, M6H2X6",hood:"Little Italy",price:"$399",sqft:"",score:78,source:"Kijiji",url:"https://www.kijiji.ca/v-apartments-condos/city-of-toronto/1-911-dovercourt-road-toronto-palmerston-little-italy-ontar/1737976973",tags:[]},
+  {title:"FANTASTIC LOCATION - Queen W/Bathurst - Bachelor Apt - Only \u2026",address:"Toronto",hood:"Bathurst",price:"$1,275",sqft:"",score:77,source:"Craigslist",url:"https://toronto.craigslist.org/tor/apa/d/toronto-fantastic-location-queen/7929715171.html",tags:["studio"]},
+  {title:"Parkdale Studio (Bachelor) Apartment for Rent - 140, 146 Jam\u2026",address:"146 Jameson Avenue, Toronto, ON, M6K 2X5",hood:"Parkdale",price:"$1,449",sqft:"423 sqft",score:76,source:"Kijiji",url:"https://www.kijiji.ca/v-apartments-condos/city-of-toronto/parkdale-studio-bachelor-apartment-for-rent-140-146-jameson/1729722586",tags:["studio"]}
 ];
 
 const todayListings = [
-  {
-    title: "Newly Renovated Studio on the Danforth with outdoor space",
-    address: "Toronto, ON M4J 1L8",
-    hood: "East Danforth",
-    price: "$1,700",
-    sqft: "340 sqft",
-    score: 97,
-    source: "Kijiji",
-    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/newly-renovated-studio-on-the-danforth-with-outdoor-space/1735360868",
-    tags: ["renovated", "studio", "outdoor space"]
-  },
-  {
-    title: "1 BEDROOM APARTMENT FOR RENT",
-    address: "1920 Weston Road, Toronto, ON, M9N 1W4",
-    hood: "Weston",
-    price: "$1,825",
-    sqft: "",
-    score: 97,
-    source: "Kijiji",
-    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/1-bedroom-apartment-for-rent/1685201413",
-    tags: []
-  },
-  {
-    title: "2 Bright Rooms (2nd Floor) \u2013 North York in a Rare, Safe Area",
-    address: "North York, ON M3H 3V7",
-    hood: "North York",
-    price: "$880",
-    sqft: "",
-    score: 83,
-    source: "Kijiji",
-    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/2-bright-rooms-2nd-floor-north-york-in-a-rare-safe-area/1738000015",
-    tags: ["bright"]
-  },
-  {
-    title: "Renovated 1 bedroom with balcony at Bathurst and Eglinton",
-    address: "Gardiner Road, Toronto, ON",
-    hood: "Toronto",
-    price: "$1,750",
-    sqft: "526 sqft",
-    score: 80,
-    source: "Kijiji",
-    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/renovated-1-bedroom-with-balcony-at-bathurst-and-eglinton/1737995719",
-    tags: ["renovated", "balcony"]
-  },
-  {
-    title: "Queen w Spadina,June or July,$1699 utils inc,1br,renov ove\u2026",
-    address: "Toronto, ON M5V 2A9",
-    hood: "Entertainment District",
-    price: "$1,699",
-    sqft: "555 sqft",
-    score: 79,
-    source: "Kijiji",
-    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/queen-w-spadina-june-or-july-1699-utils-inc-1br-renov-over-shop/1737995247",
-    tags: ["utils incl"]
-  }
+  {title:"289 BARTON AVENUE Toronto (Annex), Ontario",address:"BARTON AVENUE, Toronto (Annex), ON, M6G1R5",hood:"The Annex",price:"$399",sqft:"",score:100,source:"Kijiji",url:"https://www.kijiji.ca/v-apartments-condos/city-of-toronto/289-barton-avenue-toronto-annex-ontario/1737977037",tags:[]},
+  {title:"Queen w Spadina,June or July,$1699 utils inc,1br,renov over \u2026",address:"Toronto, ON M5V 2A9",hood:"King West",price:"$1,699",sqft:"555 sqft",score:85,source:"Kijiji",url:"https://www.kijiji.ca/v-apartments-condos/city-of-toronto/queen-w-spadina-june-or-july-1699-utils-inc-1br-renov-over-shop/1737995247",tags:["utils incl", "above shop"]},
+  {title:"Renovated bachelor for rent. Rent inclusive. (King and Duffe\u2026",address:"149 Cowan Avenue, Toronto, ON",hood:"Parkdale",price:"$1,100",sqft:"250 sqft",score:84,source:"Kijiji",url:"https://www.kijiji.ca/v-apartments-condos/city-of-toronto/renovated-bachelor-for-rent-rent-inclusive-king-and-dufferin/1733905050",tags:["renovated", "studio", "utils incl"]},
+  {title:"70 Spadina Road - Studio Apartment for Rent",address:"70 Spadina Road, Toronto, ON, M5R 2T6",hood:"The Annex",price:"$1,599",sqft:"376 sqft",score:79,source:"Kijiji",url:"https://www.kijiji.ca/v-apartments-condos/city-of-toronto/70-spadina-road-studio-apartment-for-rent/1736884558",tags:["studio"]},
+  {title:"Renovated 1 bedroom with balcony at Bathurst and Eglinton",address:"Gardiner Road, Toronto, ON",hood:"Bathurst",price:"$1,750",sqft:"526 sqft",score:79,source:"Kijiji",url:"https://www.kijiji.ca/v-apartments-condos/city-of-toronto/renovated-1-bedroom-with-balcony-at-bathurst-and-eglinton/1737995719",tags:["renovated", "balcony"]}
 ];
 
 const weeklyListings = [
-  {
-    title: "Newly Renovated Studio on the Danforth with outdoor space",
-    address: "Toronto, ON M4J 1L8",
-    hood: "East Danforth",
-    price: "$1,700",
-    sqft: "340 sqft",
-    score: 97,
-    source: "Kijiji",
-    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/newly-renovated-studio-on-the-danforth-with-outdoor-space/1735360868",
-    tags: ["renovated", "studio", "outdoor space"]
-  },
-  {
-    title: "1 BEDROOM APARTMENT FOR RENT",
-    address: "1920 Weston Road, Toronto, ON, M9N 1W4",
-    hood: "Weston",
-    price: "$1,825",
-    sqft: "",
-    score: 97,
-    source: "Kijiji",
-    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/1-bedroom-apartment-for-rent/1685201413",
-    tags: []
-  },
-  {
-    title: "2 Bright Rooms (2nd Floor) \u2013 North York in a Rare, Safe Area",
-    address: "North York, ON M3H 3V7",
-    hood: "North York",
-    price: "$880",
-    sqft: "",
-    score: 83,
-    source: "Kijiji",
-    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/2-bright-rooms-2nd-floor-north-york-in-a-rare-safe-area/1738000015",
-    tags: ["bright"]
-  },
-  {
-    title: "Renovated 1 bedroom with balcony at Bathurst and Eglinton",
-    address: "Gardiner Road, Toronto, ON",
-    hood: "Toronto",
-    price: "$1,750",
-    sqft: "526 sqft",
-    score: 80,
-    source: "Kijiji",
-    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/renovated-1-bedroom-with-balcony-at-bathurst-and-eglinton/1737995719",
-    tags: ["renovated", "balcony"]
-  },
-  {
-    title: "Queen w Spadina,June or July,$1699 utils inc,1br,renov ove\u2026",
-    address: "Toronto, ON M5V 2A9",
-    hood: "Entertainment District",
-    price: "$1,699",
-    sqft: "555 sqft",
-    score: 79,
-    source: "Kijiji",
-    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/queen-w-spadina-june-or-july-1699-utils-inc-1br-renov-over-shop/1737995247",
-    tags: ["utils incl"]
-  },
-  {
-    title: "Private Room-1 of 3 Bedroom in Downtown Toronto incl. Util\u2026",
-    address: "458 Spadina Avenue, Toronto, ON",
-    hood: "Toronto",
-    price: "$1,100",
-    sqft: "800 sqft",
-    score: 77,
-    source: "Kijiji",
-    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/private-room-1-of-3-bedroom-in-downtown-toronto-incl-utilities/1738001248",
-    tags: ["private room"]
-  },
-  {
-    title: "70 Spadina Road - Studio Apartment for Rent",
-    address: "70 Spadina Road, Toronto, ON, M5R 2T6",
-    hood: "The Annex",
-    price: "$1,599",
-    sqft: "376 sqft",
-    score: 76,
-    source: "Kijiji",
-    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/70-spadina-road-studio-apartment-for-rent/1736884558",
-    tags: ["studio"]
-  },
-  {
-    title: "Best Deal! Very Spacious! Quite Bright! One Bedroom Unit R\u2026",
-    address: "Pineway Blvd, North York, ON",
-    hood: "North York",
-    price: "$789",
-    sqft: "250 sqft",
-    score: 72,
-    source: "Kijiji",
-    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/best-deal-very-spacious-quite-bright-one-bedroom-unit-rent/1737994475",
-    tags: ["bright", "spacious"]
-  },
-  {
-    title: "Quiet Clean Studio Apartment for Rent \u2013 Yonge & Finch Nort\u2026",
-    address: "North York, ON M2N 2J2",
-    hood: "Yonge & Finch",
-    price: "$1,750",
-    sqft: "350 sqft",
-    score: 70,
-    source: "Kijiji",
-    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/quiet-clean-studio-apartment-for-rent-yonge-finch-north-york/1737994583",
-    tags: ["studio", "quiet"]
-  },
-  {
-    title: "Prime Location! Bright & Convenient Basement Rental",
-    address: "Morningside Ave, Scarborough, ON, M1B 2Z6",
-    hood: "Scarborough",
-    price: "$1,300",
-    sqft: "1200 sqft",
-    score: 68,
-    source: "Kijiji",
-    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/prime-location-bright-convenient-basement-rental/1737999030",
-    tags: ["bright", "basement"]
-  },
-  {
-    title: "BEAUTIFUL 1 BR APARTMENT ON FINCH & SENTINEL **UTILITIES I\u2026",
-    address: "391 Sentinel Road, Toronto, ON, M3J 1V4",
-    hood: "North York",
-    price: "$1,795",
-    sqft: "",
-    score: 67,
-    source: "Kijiji",
-    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/beautiful-1-br-apartment-on-finch-sentinel-utilities-incl/1737999955",
-    tags: ["utils incl"]
-  },
-  {
-    title: "Bachelor apartement in great location, Bayview and Davisvi\u2026",
-    address: "657 Balliol Street, Toronto, ON, M4S 1E6",
-    hood: "Davisville",
-    price: "$1,600",
-    sqft: "",
-    score: 64,
-    source: "Kijiji",
-    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/bachelor-apartement-in-great-location-bayview-and-davisville/1735229585",
-    tags: ["studio"]
-  },
-  {
-    title: "1 Bedroom Apartment for Rent - 5,7 & 9 Stag Hill Drive",
-    address: "9 Stag Hill Drive, Toronto, ON, M4B 1K7",
-    hood: "East York",
-    price: "$1,698",
-    sqft: "721 sqft",
-    score: 63,
-    source: "Kijiji",
-    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/1-bedroom-apartment-for-rent-5-7-9-stag-hill-drive/1725285193",
-    tags: []
-  },
-  {
-    title: "Scarborough 1 Bedroom LARGE Apartment for Rent - 3895 Lawr\u2026",
-    address: "3895 Lawrence Avenue, Scarborough, ON, M1G 3T3",
-    hood: "Scarborough",
-    price: "$1,899",
-    sqft: "720 sqft",
-    score: 59,
-    source: "Kijiji",
-    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/scarborough-1-bedroom-large-apartment-for-rent-3895-lawrence-a/1721198311",
-    tags: ["spacious"]
-  },
-  {
-    title: "Urgent Renting out 1 Bedroom Basement Apartment in North Y\u2026",
-    address: "North York, ON M3C 4A1",
-    hood: "Don Mills",
-    price: "$1,400",
-    sqft: "500 sqft",
-    score: 59,
-    source: "Kijiji",
-    url: "https://www.kijiji.ca/v-apartments-condos/city-of-toronto/urgent-renting-out-1-bedroom-basement-apartment-in-north-york/1737995376",
-    tags: ["basement"]
-  }
+  {title:"289 BARTON AVENUE Toronto (Annex), Ontario",address:"BARTON AVENUE, Toronto (Annex), ON, M6G1R5",hood:"The Annex",price:"$399",sqft:"",score:100,source:"Kijiji",url:"https://www.kijiji.ca/v-apartments-condos/city-of-toronto/289-barton-avenue-toronto-annex-ontario/1737977037",tags:[]},
+  {title:"Queen w Spadina,June or July,$1699 utils inc,1br,renov over \u2026",address:"Toronto, ON M5V 2A9",hood:"King West",price:"$1,699",sqft:"555 sqft",score:85,source:"Kijiji",url:"https://www.kijiji.ca/v-apartments-condos/city-of-toronto/queen-w-spadina-june-or-july-1699-utils-inc-1br-renov-over-shop/1737995247",tags:["utils incl", "above shop"]},
+  {title:"Renovated bachelor for rent. Rent inclusive. (King and Duffe\u2026",address:"149 Cowan Avenue, Toronto, ON",hood:"Parkdale",price:"$1,100",sqft:"250 sqft",score:84,source:"Kijiji",url:"https://www.kijiji.ca/v-apartments-condos/city-of-toronto/renovated-bachelor-for-rent-rent-inclusive-king-and-dufferin/1733905050",tags:["renovated", "studio", "utils incl"]},
+  {title:"70 Spadina Road - Studio Apartment for Rent",address:"70 Spadina Road, Toronto, ON, M5R 2T6",hood:"The Annex",price:"$1,599",sqft:"376 sqft",score:79,source:"Kijiji",url:"https://www.kijiji.ca/v-apartments-condos/city-of-toronto/70-spadina-road-studio-apartment-for-rent/1736884558",tags:["studio"]},
+  {title:"Renovated 1 bedroom with balcony at Bathurst and Eglinton",address:"Gardiner Road, Toronto, ON",hood:"Bathurst",price:"$1,750",sqft:"526 sqft",score:79,source:"Kijiji",url:"https://www.kijiji.ca/v-apartments-condos/city-of-toronto/renovated-1-bedroom-with-balcony-at-bathurst-and-eglinton/1737995719",tags:["renovated", "balcony"]},
+  {title:"Roncesvalles Village (Sunnyside and Howard Park)",address:"Toronto, ON M6R 2S1",hood:"Roncesvalles",price:"$1,695",sqft:"350 sqft",score:79,source:"Kijiji",url:"https://www.kijiji.ca/v-apartments-condos/city-of-toronto/roncesvalles-village-sunnyside-and-howard-park/1737454631",tags:[]},
+  {title:"Private Room-1 of 3 Bedroom in Downtown Toronto incl. Utilit\u2026",address:"458 Spadina Avenue, Toronto, ON",hood:"Spadina",price:"$1,100",sqft:"800 sqft",score:78,source:"Kijiji",url:"https://www.kijiji.ca/v-apartments-condos/city-of-toronto/private-room-1-of-3-bedroom-in-downtown-toronto-incl-utilities/1738001248",tags:["private room"]},
+  {title:"1 - 911 DOVERCOURT ROAD Toronto (Palmerston-Little Italy), O\u2026",address:"- 911 DOVERCOURT ROAD, Toronto (Palmerston-Little Italy), ON, M6H2X6",hood:"Little Italy",price:"$399",sqft:"",score:78,source:"Kijiji",url:"https://www.kijiji.ca/v-apartments-condos/city-of-toronto/1-911-dovercourt-road-toronto-palmerston-little-italy-ontar/1737976973",tags:[]},
+  {title:"FANTASTIC LOCATION - Queen W/Bathurst - Bachelor Apt - Only \u2026",address:"Toronto",hood:"Bathurst",price:"$1,275",sqft:"",score:77,source:"Craigslist",url:"https://toronto.craigslist.org/tor/apa/d/toronto-fantastic-location-queen/7929715171.html",tags:["studio"]},
+  {title:"Parkdale Studio (Bachelor) Apartment for Rent - 140, 146 Jam\u2026",address:"146 Jameson Avenue, Toronto, ON, M6K 2X5",hood:"Parkdale",price:"$1,449",sqft:"423 sqft",score:76,source:"Kijiji",url:"https://www.kijiji.ca/v-apartments-condos/city-of-toronto/parkdale-studio-bachelor-apartment-for-rent-140-146-jameson/1729722586",tags:["studio"]},
+  {title:"jr1 Bedroom @ Bathurst & St. Clair",address:"1516 Bathurst St., Toronto, ON, M5P 3H3",hood:"Midtown",price:"$1,600",sqft:"400 sqft",score:75,source:"Kijiji",url:"https://www.kijiji.ca/v-apartments-condos/city-of-toronto/jr1-bedroom-bathurst-st-clair/1736799488",tags:[]},
+  {title:"renovated bachelor, Wellesley and Church - ID 220",address:"54 Maitland Street, Toronto, ON, M4Y 1C9",hood:"Church & Wellesley",price:"$1,600",sqft:"297 sqft",score:75,source:"Kijiji",url:"https://www.kijiji.ca/v-apartments-condos/city-of-toronto/renovated-bachelor-wellesley-and-church-id-220/1737553577",tags:["renovated", "studio"]},
+  {title:"Live in the Heart of the Annex, steps to TTC, Shops, Restaur\u2026",address:"Toronto",hood:"The Annex",price:"$1,099",sqft:"",score:75,source:"Craigslist",url:"https://toronto.craigslist.org/tor/apa/d/central-toronto-live-in-the-heart-of/7932094841.html",tags:["central"]},
+  {title:"One bedroom apt heart of the annex university of toronto",address:"Toronto",hood:"The Annex",price:"$1,400",sqft:"",score:75,source:"Craigslist",url:"https://toronto.craigslist.org/tor/apa/d/downtown-toronto-one-bedroom-apt-heart/7933725672.html",tags:["central"]},
+  {title:"Bedrooms Available heart of the Annex University of toronto \u2026",address:"city of toronto",hood:"The Annex",price:"$1,100",sqft:"",score:75,source:"Craigslist",url:"https://toronto.craigslist.org/tor/apa/d/downtown-toronto-bedrooms-available/7933725572.html",tags:["central"]}
 ];
 
 function renderCard(l, rank) {
-  const scoreClass = l.score >= 75 ? 'score-green' : 'score-yellow';
-  const sqftHtml = l.sqft ? `<span class="sqft">${l.sqft}</span>` : '';
-  const tagsHtml = l.tags.length
-    ? '<div class="tags">' + l.tags.map(t => `<span class="tag${MATCH_TAGS.has(t) ? ' match' : ''}">${t}</span>`).join('') + '</div>'
+  const sc = l.score >= 75 ? 'score-green' : 'score-yellow';
+  const sqH = l.sqft ? `<span class="sqft">${l.sqft}</span>` : '';
+  const taH = l.tags.length
+    ? '<div class="tags">'+l.tags.map(t=>`<span class="tag${MATCH_TAGS.has(t)?' match':''}">` +t+'</span>').join('')+'</div>'
     : '';
-  return `
-    <a class="card" href="${l.url}" target="_blank" rel="noopener">
-      <div class="card-row">
-        <div class="rank-num">#${rank}</div>
-        <div class="card-inner">
-          <div class="card-header">
-            <div class="card-title">${l.title}</div>
-            <div class="score-badge ${scoreClass}">${l.score}</div>
-          </div>
-          <div class="card-addr">${l.address} · <strong>${l.hood}</strong></div>
-          <div class="card-meta">
-            <span class="price">${l.price}/mo</span>
-            ${sqftHtml}
-            <span class="source-badge">${l.source}</span>
-          </div>
-          ${tagsHtml}
-        </div>
+  return `<a class="card" href="${l.url}" target="_blank" rel="noopener">
+    <div class="card-row">
+      <div class="rank-num">#${rank}</div>
+      <div class="card-inner">
+        <div class="card-header"><div class="card-title">${l.title}</div><div class="score-badge ${sc}">${l.score}</div></div>
+        <div class="card-addr">${l.address} · <strong>${l.hood}</strong></div>
+        <div class="card-meta"><span class="price">${l.price}/mo</span>${sqH}<span class="source-badge">${l.source}</span></div>
+        ${taH}
       </div>
-    </a>`;
+    </div>
+  </a>`;
 }
 
-function renderList(id, arr) {
-  document.getElementById(id).innerHTML = arr.map((l, i) => renderCard(l, i + 1)).join('');
-}
+function renderList(id,arr){document.getElementById(id).innerHTML=arr.map((l,i)=>renderCard(l,i+1)).join('');}
 
 renderList('list-hourly', hourlyListings);
 renderList('list-today',  todayListings);
 renderList('list-week',   weeklyListings);
 
-function showTab(name, btn) {
-  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-  document.querySelectorAll('nav button').forEach(el => el.classList.remove('active'));
-  document.getElementById('tab-' + name).classList.add('active');
+function showTab(name,btn){
+  document.querySelectorAll('.tab-content').forEach(e=>e.classList.remove('active'));
+  document.querySelectorAll('nav button').forEach(e=>e.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
   btn.classList.add('active');
 }
 </script>
