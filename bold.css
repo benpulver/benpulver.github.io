@@ -624,6 +624,13 @@ a:hover {
     max-width: 240px;
 }
 
+.photo-strip figcaption .cap-date {
+    display: block;
+    margin-top: 2px;
+    color: var(--text-dim);
+    opacity: 0.75;
+}
+
 .photo-strip img {
     height: 240px;
     width: auto;
