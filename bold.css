@@ -72,7 +72,7 @@ a:hover {
 }
 
 .hero-title {
-    grid-column: 1;
+    grid-column: 1 / -1;
     grid-row: 1;
 }
 
@@ -137,7 +137,7 @@ a:hover {
 
 .hero-intro {
     display: grid;
-    grid-template-columns: minmax(0, 600px) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 600px) minmax(0, 1fr) minmax(220px, 280px);
     gap: calc(var(--grid-gap) * 2);
     align-items: start;
     margin-top: 1rem;
@@ -208,7 +208,7 @@ a:hover {
 /* ─── Hero columns (bottom row) ─── */
 
 .hero-columns {
-    grid-column: 1;
+    grid-column: 1 / -1;
     grid-row: 2;
     margin-top: 2rem;
     display: grid;
@@ -245,13 +245,19 @@ a:hover {
 /* ─── Hero CV sidebar ─── */
 
 .hero-cv {
-    grid-column: 2;
-    grid-row: 1 / span 2;
     align-self: start;
-    padding-bottom: 4rem;
     display: flex;
     flex-direction: column;
-    gap: 1.75rem;
+    gap: 1.5rem;
+    padding: 1.25rem 1.25rem 1.5rem;
+    background: #121212;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+}
+
+.hero-cv .cv-block:first-child {
+    padding-top: 0;
+    border-top: none;
 }
 
 .cv-block {
@@ -644,6 +650,29 @@ a:hover {
 
 /* ─── Responsive ─── */
 
+@media (max-width: 1200px) {
+    .hero-intro {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    }
+
+    .hero-cv {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .hero-cv .cv-block {
+        padding-top: 0;
+        border-top: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .hero-cv {
+        grid-template-columns: 1fr;
+    }
+}
+
 @media (max-width: 900px) {
     :root {
         --edge: 1.25rem;
@@ -664,15 +693,13 @@ a:hover {
     }
 
     .hero-title,
-    .hero-columns,
-    .hero-cv {
+    .hero-columns {
         grid-column: 1;
     }
 
     .hero-title { grid-row: 1; }
     .hero-intro { grid-template-columns: 1fr; gap: 2rem; }
-    .hero-columns { grid-row: 2; grid-template-columns: 1fr; margin-top: 2.5rem; padding-bottom: 2rem; }
-    .hero-cv { grid-row: 3; padding-bottom: 6rem; }
+    .hero-columns { grid-row: 2; grid-template-columns: 1fr; margin-top: 2.5rem; padding-bottom: 6rem; }
 
     .hero-aside p { max-width: none; }
 
