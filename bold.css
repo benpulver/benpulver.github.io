@@ -316,6 +316,10 @@ a:hover {
     margin-bottom: 3rem;
 }
 
+.section-head--plain {
+    grid-template-columns: 1fr auto;
+}
+
 .page-num-small {
     font-size: 13px;
     color: var(--text-dim);
