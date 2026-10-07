@@ -57,6 +57,14 @@ a:hover {
     text-align: right;
 }
 
+.top-strip--solo {
+    grid-template-columns: 1fr;
+}
+
+.top-strip--solo a.alt-link {
+    text-align: left;
+}
+
 .top-strip a.alt-link:hover {
     color: var(--text-bright);
 }
