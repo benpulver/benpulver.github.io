@@ -284,6 +284,13 @@ a:hover {
     font-size: 13px;
 }
 
+.cv-item .cv-sublabel {
+    color: var(--text-dim);
+    font-size: 12px;
+    margin-top: 0.25rem;
+    margin-bottom: 0.15rem;
+}
+
 .cv-item .cv-date {
     color: var(--text-dim);
     margin-top: 2px;
