@@ -135,9 +135,15 @@ a:hover {
     }
 }
 
+.hero-intro {
+    display: grid;
+    grid-template-columns: minmax(0, 600px) minmax(0, 1fr);
+    gap: calc(var(--grid-gap) * 2);
+    align-items: start;
+    margin-top: 1rem;
+}
+
 .hero-aside {
-    grid-column: 2;
-    grid-row: 1;
     align-self: start;
 }
 
@@ -145,7 +151,7 @@ a:hover {
     font-size: 13px;
     line-height: 1.55;
     color: var(--text);
-    max-width: 28ch;
+    max-width: 62ch;
 }
 
 .hero-aside p + p {
@@ -183,7 +189,6 @@ a:hover {
 
 .hero-photo {
     max-width: 600px;
-    margin-top: 1rem;
 }
 
 .hero-photo img {
@@ -209,7 +214,7 @@ a:hover {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: var(--grid-gap);
-    align-self: end;
+    align-self: start;
     padding-bottom: 4rem;
 }
 
@@ -241,8 +246,8 @@ a:hover {
 
 .hero-cv {
     grid-column: 2;
-    grid-row: 2;
-    align-self: end;
+    grid-row: 1 / span 2;
+    align-self: start;
     padding-bottom: 4rem;
     display: flex;
     flex-direction: column;
@@ -659,16 +664,15 @@ a:hover {
     }
 
     .hero-title,
-    .hero-aside,
     .hero-columns,
     .hero-cv {
         grid-column: 1;
     }
 
     .hero-title { grid-row: 1; }
-    .hero-aside { grid-row: 2; margin-top: 2rem; }
-    .hero-columns { grid-row: 3; grid-template-columns: 1fr; margin-top: 2.5rem; padding-bottom: 2rem; }
-    .hero-cv { grid-row: 4; padding-bottom: 6rem; }
+    .hero-intro { grid-template-columns: 1fr; gap: 2rem; }
+    .hero-columns { grid-row: 2; grid-template-columns: 1fr; margin-top: 2.5rem; padding-bottom: 2rem; }
+    .hero-cv { grid-row: 3; padding-bottom: 6rem; }
 
     .hero-aside p { max-width: none; }
 
