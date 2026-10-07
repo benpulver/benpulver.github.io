@@ -80,6 +80,8 @@ a:hover {
     position: relative;
     overflow: hidden;
     padding-bottom: 1em;
+    /* keep the water panel at its original width (the left 3/4 column) */
+    width: calc((100% - var(--grid-gap)) * 0.75);
 }
 
 
@@ -696,6 +698,8 @@ a:hover {
     .hero-columns {
         grid-column: 1;
     }
+
+    .video-text-wrap { width: 100%; }
 
     .hero-title { grid-row: 1; }
     .hero-intro { grid-template-columns: 1fr; gap: 2rem; }
