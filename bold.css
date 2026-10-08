@@ -552,6 +552,10 @@ a:hover {
     line-height: 1.5;
 }
 
+.cv-cite {
+    overflow-wrap: anywhere;
+}
+
 .cv-entry-head strong {
     font-weight: 500;
     color: var(--text-bright);
