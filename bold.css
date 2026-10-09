@@ -496,8 +496,14 @@ a:hover {
 
 .writing-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: var(--grid-gap);
+}
+
+.writing-item > strong {
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--text);
 }
 
 .writing-col {
@@ -746,6 +752,11 @@ a:hover {
 /* ─── Responsive ─── */
 
 @media (max-width: 1200px) {
+    .writing-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        row-gap: 2.5rem;
+    }
+
     .hero-intro {
         grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     }
